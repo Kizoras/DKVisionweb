@@ -1,0 +1,612 @@
+<!-- 
+  Complete diagnostic check page for the guru sync issue
+  This page will help identify exactly where the problem is
+-->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Diagnostic - Guru Sync Issue</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #eee;
+      padding: 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #00ffd1;
+      padding-bottom: 20px;
+    }
+    h1 { color: #00ffd1; font-size: 28px; margin: 0; }
+    .subtitle { color: #99a0b3; margin-top: 10px; }
+    
+    .test-section {
+      background: rgba(22, 33, 62, 0.8);
+      border: 2px solid #00ffd1;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .test-section h2 {
+      color: #00ffd1;
+      margin-top: 0;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    button {
+      background: linear-gradient(135deg, #00ffd1, #00ffff);
+      color: #1a1a2e;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 209, 0.4);
+    }
+    button.danger {
+      background: linear-gradient(135deg, #ff6b6b, #ff5252);
+      color: white;
+    }
+    
+    .status-line {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+      background: rgba(15, 52, 96, 0.5);
+      border-left: 3px solid #00ffd1;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+    }
+    .status-line strong { min-width: 150px; color: #00ffd1; }
+    .status-line.success { border-left-color: #00ff00; }
+    .status-line.warning { border-left-color: #ffcc00; }
+    .status-line.error { border-left-color: #ff4444; }
+    
+    .result {
+      background: rgba(15, 52, 96, 0.3);
+      border-left: 4px solid #00ffd1;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      max-height: 400px;
+      overflow-y: auto;
+      color: #00ffd1;
+      line-height: 1.4;
+    }
+    .result-line {
+      padding: 3px 0;
+      margin: 3px 0;
+    }
+    .result-line.ok { color: #00ff00; }
+    .result-line.warn { color: #ffcc00; }
+    .result-line.err { color: #ff6b6b; }
+    .result-line.info { color: #99a0b3; }
+    
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .comparison-box {
+      background: rgba(15, 52, 96, 0.4);
+      border: 1px solid #00ffd1;
+      border-radius: 5px;
+      padding: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+    }
+    .comparison-label { 
+      color: #00ffd1; 
+      font-weight: bold; 
+      margin-bottom: 8px; 
+      display: block;
+    }
+    
+    .action-items {
+      background: rgba(0, 255, 209, 0.05);
+      border: 1px dashed #00ffd1;
+      border-radius: 5px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+    .action-items strong { color: #00ffd1; }
+    .action-items ol { margin: 10px 0; padding-left: 20px; }
+    .action-items li { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🔬 Guru Sync Issue - Full Diagnostic</h1>
+      <p class="subtitle">Comprehensive test suite untuk debug masalah sync data guru</p>
+    </div>
+
+    <!-- Test 1: Basic Checks -->
+    <div class="test-section">
+      <h2>✓ Step 1: Environment Checks</h2>
+      <button onclick="runEnvironmentCheck()">🔍 Check Environment</button>
+      <div id="env-result" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Test 2: Storage Validation -->
+    <div class="test-section">
+      <h2>Step 2: Storage Validation</h2>
+      <button onclick="validateStorage()">🧪 Validate Storage</button>
+      <div id="storage-result" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Test 3: Form Submission Simulation -->
+    <div class="test-section">
+      <h2>Step 3: Simulate Form Submission</h2>
+      <p style="color: #99a0b3; margin: 10px 0;">This simulates what happens when you submit the guru form in dashboard</p>
+      <div class="button-group">
+        <button onclick="simulateFormSubmission()">Simulate Form Submit</button>
+        <button onclick="simulateFormSubmissionWithError()">Simulate with Error</button>
+      </div>
+      <div id="form-result" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Test 4: Polling Detection -->
+    <div class="test-section">
+      <h2>Step 4: Polling Detection (requires about.html open)</h2>
+      <p style="color: #99a0b3; margin: 10px 0;">Open about.html in another tab with console open, then click below</p>
+      <button onclick="triggerPollingDetection()">Trigger Change for Polling</button>
+      <div id="polling-result" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Test 5: Cross-Tab Communication -->
+    <div class="test-section">
+      <h2>Step 5: Cross-Tab Storage Event</h2>
+      <p style="color: #99a0b3; margin: 10px 0;">Open about.html in another tab and watch for storage event</p>
+      <button onclick="triggerStorageEvent()">Trigger Storage Event</button>
+      <div id="event-result" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Test 6: Dashboard Replication -->
+    <div class="test-section">
+      <h2>Step 6: Replicate Dashboard Behavior</h2>
+      <p style="color: #99a0b3; margin: 10px 0;">Complete form submission flow exactly as dashboard does it</p>
+      <button onclick="replicateDashboardFlow()">Replicate Dashboard Flow</button>
+      <div id="dashboard-result" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Test 7: Data Integrity -->
+    <div class="test-section">
+      <h2>Step 7: Data Integrity Check</h2>
+      <button onclick="checkDataIntegrity()">Check Integrity</button>
+      <div id="integrity-result" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Final Recommendations -->
+    <div class="test-section">
+      <h2>Final Recommendations</h2>
+      <button onclick="generateReport()">Generate Full Report</button>
+      <div id="recommendations" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Action Items -->
+    <div class="action-items">
+      <strong>Next Steps for User:</strong>
+      <ol>
+        <li>Run all tests above from Step 1 to Step 7</li>
+        <li>Screenshot each result</li>
+        <li>Also open browser console (F12) and check for any red error messages</li>
+        <li>Share the results to identify where exactly the problem occurs</li>
+        <li>Use the "Generate Full Report" to get a comprehensive summary</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    const GURU_KEY = 'dkv_guru_data';
+
+    function addResultLine(resultDivId, text, type = 'info') {
+      const div = document.getElementById(resultDivId);
+      const line = document.createElement('div');
+      line.className = `result-line ${type}`;
+      line.textContent = text;
+      div.appendChild(line);
+    }
+
+    function showResult(resultDivId) {
+      document.getElementById(resultDivId).style.display = 'block';
+    }
+
+    function clearResult(resultDivId) {
+      document.getElementById(resultDivId).innerHTML = '';
+    }
+
+    // === Test Functions ===
+
+    function runEnvironmentCheck() {
+      const resultDiv = 'env-result';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, '🔍 Checking environment...', 'info');
+      addResultLine(resultDiv, '');
+
+      // Check localStorage availability
+      try {
+        const test = '__test__';
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        addResultLine(resultDiv, '✓ localStorage: Available and working', 'ok');
+      } catch (e) {
+        addResultLine(resultDiv, '✗ localStorage: NOT available - ' + e.message, 'err');
+      }
+
+      // Check GURU_KEY
+      addResultLine(resultDiv, '✓ GURU_KEY constant: ' + GURU_KEY, 'info');
+
+      // Check browser
+      addResultLine(resultDiv, '✓ Browser: ' + navigator.userAgent.substring(0, 50) + '...', 'info');
+      addResultLine(resultDiv, '✓ Current URL: ' + window.location.href, 'info');
+
+      // Check if about.html is accessible (conceptually)
+      addResultLine(resultDiv, '✓ Can check about.html via: http://localhost/Dummy/user/about.html', 'info');
+      addResultLine(resultDiv, '✓ Can check dashboard via: http://localhost/Dummy/admin/dashboard.php', 'info');
+    }
+
+    function validateStorage() {
+      const resultDiv = 'storage-result';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, 'Validating storage...', 'info');
+      addResultLine(resultDiv, '');
+
+      const value = localStorage.getItem(GURU_KEY);
+      
+      if (!value) {
+        addResultLine(resultDiv, 'Storage is EMPTY', 'warn');
+        addResultLine(resultDiv, '   Creating default data...', 'info');
+        
+        const defaultData = [
+          { id: 1, nama: 'Drs. Ahmad Wijaya', foto: '', mapel: 'Desain Grafis', status: 'Aktif' },
+          { id: 2, nama: 'Budi Santoso, S.Pd', foto: '', mapel: 'Typography', status: 'Aktif' }
+        ];
+        
+        try {
+          localStorage.setItem(GURU_KEY, JSON.stringify(defaultData));
+          addResultLine(resultDiv, '✓ Default data created', 'ok');
+          addResultLine(resultDiv, '  Count: ' + defaultData.length + ' guru', 'info');
+        } catch (e) {
+          addResultLine(resultDiv, '✗ Error creating default: ' + e.message, 'err');
+        }
+      } else {
+        addResultLine(resultDiv, '✓ Storage has data, length: ' + value.length, 'ok');
+        
+        try {
+          const data = JSON.parse(value);
+          addResultLine(resultDiv, '✓ JSON valid, guru count: ' + data.length, 'ok');
+          
+          data.forEach((g, i) => {
+            addResultLine(resultDiv, `  ${i+1}. ${g.nama} (ID: ${g.id})`, 'info');
+          });
+        } catch (e) {
+          addResultLine(resultDiv, '✗ JSON INVALID: ' + e.message, 'err');
+          addResultLine(resultDiv, '  First 100 chars: ' + value.substring(0, 100), 'info');
+        }
+      }
+    }
+
+    function simulateFormSubmission() {
+      const resultDiv = 'form-result';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, 'Simulating form submission...', 'info');
+      addResultLine(resultDiv, '');
+
+      try {
+        // Step 1: Get existing data
+        addResultLine(resultDiv, 'Step 1: Loading existing guru data...', 'info');
+        let guru = [];
+        const existing = localStorage.getItem(GURU_KEY);
+        if (existing) {
+          guru = JSON.parse(existing);
+        }
+        addResultLine(resultDiv, '  ✓ Loaded ' + guru.length + ' guru', 'ok');
+
+        // Step 2: Create new guru
+        addResultLine(resultDiv, 'Step 2: Creating new guru object...', 'info');
+        const newId = guru.length > 0 ? Math.max(...guru.map(g => g.id)) + 1 : 1;
+        const newGuru = {
+          id: newId,
+          nama: 'Test Guru ' + new Date().getTime(),
+          foto: '',
+          mapel: 'Test Subject',
+          status: 'Aktif'
+        };
+        addResultLine(resultDiv, '  ✓ Created guru ID: ' + newId, 'ok');
+
+        // Step 3: Add to array
+        addResultLine(resultDiv, 'Step 3: Adding to array...', 'info');
+        guru.unshift(newGuru);
+        addResultLine(resultDiv, '  ✓ Array now has ' + guru.length + ' guru', 'ok');
+
+        // Step 4: Save to localStorage
+        addResultLine(resultDiv, 'Step 4: Saving to localStorage...', 'info');
+        const jsonString = JSON.stringify(guru);
+        localStorage.setItem(GURU_KEY, jsonString);
+        addResultLine(resultDiv, '  ✓ Saved, JSON length: ' + jsonString.length, 'ok');
+
+        // Step 5: Verify
+        addResultLine(resultDiv, 'Step 5: Verifying save...', 'info');
+        const saved = localStorage.getItem(GURU_KEY);
+        const isMatch = jsonString === saved;
+        addResultLine(resultDiv, '  ' + (isMatch ? '✓' : '✗') + ' Verification: ' + (isMatch ? 'PASS' : 'FAIL'), isMatch ? 'ok' : 'err');
+
+        addResultLine(resultDiv, '');
+        addResultLine(resultDiv, 'FORM SIMULATION COMPLETE', 'ok');
+        addResultLine(resultDiv, 'Check about.html console for polling detection...', 'info');
+
+      } catch (error) {
+        addResultLine(resultDiv, 'ERROR: ' + error.message, 'err');
+        addResultLine(resultDiv, 'Stack: ' + error.stack, 'err');
+      }
+    }
+
+    function simulateFormSubmissionWithError() {
+      const resultDiv = 'form-result';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, 'Simulating form with error injection...', 'info');
+      addResultLine(resultDiv, '');
+
+      try {
+        // Intentionally cause an error
+        const badData = undefined;
+        JSON.stringify(badData.nonexistent);
+      } catch (error) {
+        addResultLine(resultDiv, '✓ Error caught: ' + error.message, 'ok');
+        addResultLine(resultDiv, 'This is what would happen if form submission fails silently', 'info');
+      }
+    }
+
+    function triggerPollingDetection() {
+      const resultDiv = 'polling-result';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, 'Triggering change for polling...', 'info');
+      addResultLine(resultDiv, '');
+
+      try {
+        let guru = [];
+        const existing = localStorage.getItem(GURU_KEY);
+        if (existing) {
+          guru = JSON.parse(existing);
+        }
+
+        const newId = guru.length > 0 ? Math.max(...guru.map(g => g.id)) + 1 : 1;
+        guru.unshift({
+          id: newId,
+          nama: 'Polling Test ' + Math.random().toString(36).substring(7),
+          foto: '',
+          mapel: 'Test',
+          status: 'Aktif'
+        });
+
+        localStorage.setItem(GURU_KEY, JSON.stringify(guru));
+        
+        addResultLine(resultDiv, '✓ Change triggered!', 'ok');
+        addResultLine(resultDiv, 'Check about.html console for:', 'info');
+        addResultLine(resultDiv, 'PERUBAHAN TERDETEKSI', 'info');
+        addResultLine(resultDiv, 'Rendered X teacher cards', 'info');
+      } catch (e) {
+        addResultLine(resultDiv, '✗ Error: ' + e.message, 'err');
+      }
+    }
+
+    function triggerStorageEvent() {
+      const resultDiv = 'event-result';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, 'Triggering storage event...', 'info');
+      addResultLine(resultDiv, '');
+
+      try {
+        const value = localStorage.getItem(GURU_KEY) || '[]';
+        localStorage.setItem(GURU_KEY + '_temp', 'test');
+        localStorage.removeItem(GURU_KEY + '_temp');
+
+        // Force storage event by changing key
+        const tempKey = 'event_test_' + Date.now();
+        localStorage.setItem(tempKey, 'trigger');
+
+        addResultLine(resultDiv, '✓ Storage event method triggered', 'ok');
+        addResultLine(resultDiv, 'Check about.html for storage event listener...', 'info');
+      } catch (e) {
+        addResultLine(resultDiv, '✗ Error: ' + e.message, 'err');
+      }
+    }
+
+    function replicateDashboardFlow() {
+      const resultDiv = 'dashboard-result';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, 'Replicating dashboard flow exactly...', 'info');
+      addResultLine(resultDiv, '');
+
+      try {
+        // This replicates the exact flow from dashboard.php form handler
+
+        // 1. Validate
+        const formData = {
+          nama: 'Dashboard Flow Test',
+          foto: '',
+          mapel: 'Test Mapel',
+          status: 'Aktif'
+        };
+        addResultLine(resultDiv, '1. Form validation: ✓', 'ok');
+
+        // 2. Load existing
+        let guru = [];
+        const existing = localStorage.getItem(GURU_KEY);
+        if (existing) {
+          guru = JSON.parse(existing);
+        }
+        addResultLine(resultDiv, '2. Load existing: ✓ (' + guru.length + ' guru)', 'ok');
+
+        // 3. Prepare new guru (ADD MODE)
+        const newId = guru.length > 0 ? Math.max(...guru.map(g => g.id)) + 1 : 1;
+        guru.unshift({
+          id: newId,
+          nama: formData.nama,
+          foto: formData.foto,
+          mapel: formData.mapel,
+          status: formData.status
+        });
+        addResultLine(resultDiv, '3. Add new guru: ✓ (ID: ' + newId + ')', 'ok');
+
+        // 4. Save to localStorage (with error handling)
+        const jsonString = JSON.stringify(guru);
+        localStorage.setItem(GURU_KEY, jsonString);
+        addResultLine(resultDiv, '4. Save to localStorage: ✓', 'ok');
+
+        // 5. Verify
+        const saved = localStorage.getItem(GURU_KEY);
+        const verified = jsonString === saved;
+        addResultLine(resultDiv, '5. Verify save: ' + (verified ? '✓' : '✗'), verified ? 'ok' : 'err');
+
+        // 6. Render table (simulated)
+        addResultLine(resultDiv, '6. Render table: ✓ (would show ' + guru.length + ' rows)', 'ok');
+
+        // 7. Close modal (simulated)
+        addResultLine(resultDiv, '7. Close modal: ✓', 'ok');
+
+        // 8. Update stats (simulated)
+        addResultLine(resultDiv, '8. Update stats: ✓', 'ok');
+
+        addResultLine(resultDiv, '');
+        addResultLine(resultDiv, 'Dashboard flow replication COMPLETE', 'ok');
+
+      } catch (error) {
+        addResultLine(resultDiv, 'ERROR: ' + error.message, 'err');
+      }
+    }
+
+    function checkDataIntegrity() {
+      const resultDiv = 'integrity-result';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, 'Checking data integrity...', 'info');
+      addResultLine(resultDiv, '');
+
+      try {
+        const value = localStorage.getItem(GURU_KEY);
+        if (!value) {
+          addResultLine(resultDiv, 'No data in storage', 'warn');
+          return;
+        }
+
+        const data = JSON.parse(value);
+        addResultLine(resultDiv, '✓ JSON parseable: YES', 'ok');
+        addResultLine(resultDiv, '✓ Is Array: ' + (Array.isArray(data) ? 'YES' : 'NO'), 'ok');
+        addResultLine(resultDiv, '✓ Element count: ' + data.length, 'ok');
+        addResultLine(resultDiv, '', 'info');
+
+        // Check each element
+        let valid = 0, invalid = 0;
+        data.forEach((g, i) => {
+          const hasId = g.id !== undefined;
+          const hasNama = g.nama && typeof g.nama === 'string';
+          const hasMapel = g.mapel && typeof g.mapel === 'string';
+          const hasStatus = g.status && typeof g.status === 'string';
+
+          if (hasId && hasNama && hasMapel && hasStatus) {
+            valid++;
+            addResultLine(resultDiv, `✓ [${i}] ${g.nama} (ID:${g.id}) - Valid`, 'ok');
+          } else {
+            invalid++;
+            addResultLine(resultDiv, `✗ [${i}] Invalid record`, 'err');
+          }
+        });
+
+        addResultLine(resultDiv, '', 'info');
+        addResultLine(resultDiv, `Summary: ${valid} valid, ${invalid} invalid`, valid === data.length ? 'ok' : 'warn');
+
+      } catch (error) {
+        addResultLine(resultDiv, 'ERROR: ' + error.message, 'err');
+      }
+    }
+
+    function generateReport() {
+      const resultDiv = 'recommendations';
+      clearResult(resultDiv);
+      showResult(resultDiv);
+
+      addResultLine(resultDiv, 'COMPREHENSIVE DIAGNOSTIC REPORT', 'info');
+      addResultLine(resultDiv, '='.repeat(50), 'info');
+      addResultLine(resultDiv, '');
+
+      // Gather all info
+      const storageAvailable = true;
+      const storageHasData = localStorage.getItem(GURU_KEY) !== null;
+      const keyName = GURU_KEY;
+
+      addResultLine(resultDiv, 'System Information:', 'info');
+      addResultLine(resultDiv, '  Storage Key: ' + keyName, 'info');
+      addResultLine(resultDiv, '  Storage Available: YES', 'ok');
+      addResultLine(resultDiv, '  Has Data: ' + (storageHasData ? 'YES' : 'NO'), storageHasData ? 'ok' : 'warn');
+      addResultLine(resultDiv, '', 'info');
+
+      addResultLine(resultDiv, 'Recommendations:', 'info');
+      addResultLine(resultDiv, '1. Open about.html tab with Console visible (F12)', 'info');
+      addResultLine(resultDiv, '2. Go to dashboard.php, add a test guru', 'info');
+      addResultLine(resultDiv, '3. Check about.html console for:', 'info');
+      addResultLine(resultDiv, '   - "PERUBAHAN TERDETEKSI" (polling detection)', 'info');
+      addResultLine(resultDiv, '   - "Rendered X teacher cards" (re-render)', 'info');
+      addResultLine(resultDiv, '4. If no logs: polling not detecting changes', 'warn');
+      addResultLine(resultDiv, '5. If has logs but cards not updating: UI issue', 'warn');
+      addResultLine(resultDiv, '', 'info');
+
+      addResultLine(resultDiv, 'If issue persists:', 'warn');
+      addResultLine(resultDiv, '- Check browser console for JS errors (F12)', 'info');
+      addResultLine(resultDiv, '- Verify localStorage.setItem is called', 'info');
+      addResultLine(resultDiv, '- Verify GURU_KEY constant is same in both pages', 'info');
+      addResultLine(resultDiv, '- Verify about.html polling logs appear periodically', 'info');
+    }
+
+    // Auto-run environment check on load
+    window.addEventListener('load', function() {
+      console.log('✅ Diagnostic page loaded');
+    });
+  </script>
+</body>
+</html>

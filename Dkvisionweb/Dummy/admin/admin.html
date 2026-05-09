@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Panel - Jurusan DKV</title>
+  <link rel="stylesheet" href="../user/styles.css">
+  <style>
+    body { background: var(--bg-800); color: var(--text); font-family: var(--font-family); }
+    .admin-header { background: var(--bg-900); padding: 20px; text-align: center; border-bottom: 1px solid var(--glass-border); }
+    .admin-header h1 { margin: 0; color: var(--accent); }
+    .admin-logout { position: absolute; top: 20px; right: 20px; }
+    .admin-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .admin-section { margin-bottom: 40px; padding: 20px; background: var(--panel); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); }
+    .admin-section h3 { margin-top: 0; color: var(--accent); }
+    .admin-controls { margin-bottom: 20px; }
+    .admin-controls button { margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <div class="admin-header">
+    <h1>Admin Panel - Jurusan DKV</h1>
+    <button id="logoutBtn" class="admin-logout">Logout</button>
+  </div>
+  <div class="admin-container">
+    <div class="admin-section">
+      <h3>News</h3>
+      <div id="adminNewsControls" class="admin-controls">
+        <button id="addNewsBtn">Tambah Berita</button>
+        <button id="pasteImageBtn_news" class="ghost">Paste Image</button>
+      </div>
+      <div id="newsList"></div>
+    </div>
+
+    <div class="admin-section">
+      <h3>Portfolio</h3>
+      <div id="adminPortfolioControls" class="admin-controls">
+        <button id="addPortfolioBtn">Tambah Portfolio</button>
+        <button id="pasteImageBtn_port" class="ghost">Paste Image</button>
+      </div>
+      <div id="portfolioList"></div>
+    </div>
+
+    <div class="admin-section">
+      <h3>Products</h3>
+      <div id="adminProductsControls" class="admin-controls">
+        <button id="addProductBtn">Tambah Produk</button>
+        <button id="pasteImageBtn_prod" class="ghost">Paste Image</button>
+      </div>
+      <div id="productsList"></div>
+    </div>
+  </div>
+
+  <div id="itemModal" class="modal" style="display:none">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <h3 id="itemModalTitle">Tambah Item</h3>
+      <form id="itemForm">
+        <label>Judul / Nama<br><input id="itemTitle" type="text" required /></label>
+        <label>Deskripsi<br><textarea id="itemDesc" rows="3"></textarea></label>
+        <label>Image URL (opsional)<br><input id="itemImage" type="url" placeholder="https://..." /></label>
+        <label>Video URL (opsional)<br><input id="itemVideo" type="url" placeholder="https://www.youtube.com/watch?v=..." /></label>
+        <div id="itemPreview" class="thumb" style="margin-top:8px;">Preview</div>
+        <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+          <button type="button" id="itemCancel" class="ghost">Batal</button>
+          <button type="submit" id="itemSubmit">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="../app.js"></script>
+</body>
+</html>
