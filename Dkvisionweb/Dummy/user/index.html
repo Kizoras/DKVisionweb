@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="id">
+  <head><script src="dkv_site.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="../gambar/dkvisionlogo.jpeg" />
+  <title>Jurusan DKV - Desain Komunikasi Visual</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body id="home-page"> 
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">
+          <span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Jurusan DKV</span>
+          <span class="logo-tagline">SMKN 1 Cibinong</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="news.html" class="nav-link">News</a>
+        <a href="curriculum.html" class="nav-link">Kurikulum</a>
+        <a href="portfolio.html" class="nav-link">Portofolio</a>
+        
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="https://smkn1cibinong.sch.id" target="_blank" rel="noopener" class="nav-link nav-external">
+          SMKN 1 Cibinong <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+        </a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+  <nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+        <div class="logo-text">
+          <span class="logo-name">Jurusan DKV</span>
+          <span class="logo-tagline">SMKN 1 Cibinong</span>
+        </div>
+      </div>
+      <button class="mobile-nav-close" id="mobileClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About</a>
+      <a href="news.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> News</a>
+      <a href="curriculum.html" class="mobile-nav-link"><i class="fa-solid fa-book-open"></i> Kurikulum</a>
+      <a href="portfolio.html" class="mobile-nav-link"><i class="fa-solid fa-images"></i> Portofolio</a>
+      
+      <a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+      <a href="https://smkn1cibinong.sch.id" target="_blank" class="mobile-nav-link">
+        <i class="fa-solid fa-school"></i> SMKN 1 Cibinong
+      </a>
+    </div>
+    <div class="mobile-nav-social">
+      <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://facebook.com/smkn1cibinong" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </nav>
+
+  
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-grid-bg"></div>
+
+  <!-- BACKGROUND SLIDESHOW (di belakang) - Durasi 5 detik -->
+  <div class="background-slideshow">
+    <div class="bg-slide active" style="background-image: url('../gambar/webpage.jpg');"></div>
+    <div class="bg-slide" style="background-image: url('../gambar/dkvlab.jpg');"></div>
+  </div>
+  <div class="background-overlay"></div>
+
+  <div class="container">
+    <div class="hero-layout">
+
+      <div class="hero-content" data-animate="fadeUp">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span>Selamat Datang di DKV</span>
+          <span class="eyebrow-line"></span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-title-main">Desain</span>
+          <span class="hero-title-accent">Komunikasi</span>
+          <span class="hero-title-bold">Visual.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Kreatif · Inovatif · Profesional
+        </p>
+
+        <p class="hero-desc">
+          Jurusan DKV berfokus pada pengembangan kreativitas dan keterampilan visual
+          dalam menyampaikan pesan secara efektif melalui berbagai media digital dan cetak.
+        </p>
+
+        <div class="hero-actions">
+          <a href="curriculum.html" class="btn-primary">
+            <span>Lihat Kurikulum</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="portfolio.html" class="btn-ghost">
+            <i class="fa-solid fa-images"></i>
+            <span>Lihat Portofolio</span>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <!-- stat konten tetap sama -->
+        </div>
+      </div>
+
+      <!-- HERO IMAGE SLIDESHOW (di dalam frame) - Durasi 7 detik -->
+      <div class="hero-visual" data-animate="fadeIn">
+  <div class="hero-img-frame">
+    <div class="hero-img-inner">
+      <div class="hero-img-slideshow">
+        <img src="../gambar/dkvphoto.jpeg" alt="DKV Lab" class="hero-img-slide active" />
+        <img src="../gambar/dkvstudent.jpeg" alt="DKV Student" class="hero-img-slide" />
+      </div>
+    </div>
+   
+
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+    <!-- ===== KEUNGGULAN ===== -->
+    <section class="section-keunggulan">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <div class="section-label">Keunggulan Jurusan</div>
+          <h2 class="section-title">Mengapa Memilih <em>DKV?</em></h2>
+          <p class="section-desc">Kami membekali siswa dengan keterampilan industri kreatif yang siap pakai</p>
+        </div>
+
+        <div class="keunggulan-grid">
+          <article class="keunggulan-card" data-animate="fadeUp" data-delay="0">
+            <div class="keunggulan-card-num">01</div>
+            <div class="keunggulan-icon"><i class="fa-solid fa-industry"></i></div>
+            <h3>Kurikulum Industri</h3>
+            <p>Pembelajaran berbasis proyek sesuai standar industri kreatif masa kini dengan mentor berpengalaman.</p>
+            
+          </article>
+
+          <article class="keunggulan-card featured" data-animate="fadeUp" data-delay="100">
+            <div class="keunggulan-card-num">02</div>
+            <div class="keunggulan-icon"><i class="fa-solid fa-laptop"></i></div>
+            <h3>Fasilitas Modern</h3>
+            <p>Lab komputer iMac, studio fotografi profesional, dan ruang desain yang lengkap dan modern.</p>
+            
+          </article>
+
+          <article class="keunggulan-card" data-animate="fadeUp" data-delay="200">
+            <div class="keunggulan-card-num">03</div>
+            <div class="keunggulan-icon"><i class="fa-solid fa-trophy"></i></div>
+            <h3>Prestasi Nasional</h3>
+            <p>Juara lomba desain grafis dan animasi tingkat provinsi & nasional dari berbagai kompetisi bergengsi.</p>
+            
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MULTIMEDIA ===== -->
+    <section class="section-multimedia">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <div class="section-label">Multimedia</div>
+          <h2 class="section-title">Official <em>YouTube</em> Channel</h2>
+        </div>
+
+        <div class="multimedia-grid">
+          <article class="media-card primary-media" data-animate="fadeUp">
+            <div class="media-card-icon">
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+            <h3>SMKN 1 Cibinong Official</h3>
+            <p>Ikuti kegiatan dan karya terbaik siswa DKV di channel YouTube resmi sekolah.</p>
+            <a href="https://www.youtube.com/@SMKN1Cibinong_Official" target="_blank" class="media-card-btn">
+              Kunjungi Channel <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+            </a>
+          </article>
+
+          <article class="media-card" data-animate="fadeUp" data-delay="100">
+            <div class="media-card-icon">
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+            <h3>MOU & Sertifikat</h3>
+            <p>Kerjasama dengan perusahaan mitra dan sertifikasi kompetensi siswa DKV.</p>
+          </article>
+
+          <article class="media-card" data-animate="fadeUp" data-delay="200">
+            <div class="media-card-icon">
+              <i class="fa-solid fa-chalkboard-teacher"></i>
+            </div>
+            <h3>Kepala Kompetensi</h3>
+            <p>Pengantar dari kepala program keahlian DKV SMKN 1 Cibinong.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BERITA TERBARU ===== -->
+    <section class="section-news">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <div class="section-label">Update Terkini</div>
+          <h2 class="section-title">Berita <em>Terbaru</em></h2>
+          <p class="section-desc">Informasi terkini seputar kegiatan dan prestasi jurusan DKV</p>
+        </div>
+        <div id="newsList" class="news-grid">
+  <!-- Berita akan ditampilkan di sini secara horizontal -->
+</div>
+<div class="news-cta" data-animate="fadeUp">
+  <a href="news.html" class="btn-outline-dark">
+    Lihat Semua Berita <i class="fa-solid fa-arrow-right"></i>
+  </a>
+</div>
+      </div>
+    </section>
+
+    <!-- ===== SOSIAL MEDIA STRIP ===== -->
+    <section class="section-social">
+      <div class="container">
+        <div class="social-strip" data-animate="fadeUp">
+          <div class="social-strip-text">
+            <h3>Ikuti Kami di Sosial Media</h3>
+            <p>Temukan karya, kegiatan, dan update terbaru DKV</p>
+          </div>
+          <div class="social-icons-row">
+            <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon-btn instagram" data-tooltip="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com/smkn1cibinong" target="_blank" class="social-icon-btn facebook" data-tooltip="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="social-icon-btn youtube" data-tooltip="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" class="social-icon-btn tiktok" data-tooltip="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+              <div class="logo-text">
+                <span class="logo-name">Jurusan DKV</span>
+                <span class="logo-tagline">SMKN 1 Cibinong</span>
+              </div>
+            </div>
+            <p class="footer-brand-desc">
+              Mencetak generasi kreatif dan profesional di bidang Desain Komunikasi Visual sejak 2022.
+            </p>
+            <div class="footer-socials">
+              <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="footer-social" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://facebook.com/smkn1cibinong" target="_blank" class="footer-social" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="footer-social" aria-label="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" class="footer-social" aria-label="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Navigasi</h4>
+            <div class="footer-links">
+              <a href="index.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Beranda</a>
+              <a href="about.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Tentang</a>
+              <a href="curriculum.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Kurikulum</a>
+              <a href="contact.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Kontak</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Konten</h4>
+            <div class="footer-links">
+              <a href="portfolio.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Portofolio</a>
+              
+              <a href="news.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Berita</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Kontak</h4>
+            <div class="footer-contact-items">
+              <div class="footer-contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:cibionebogor@yahoo.com">cibionebogor@yahoo.com</a>
+              </div>
+              <div class="footer-contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+622518663846">(0251) 8663846</a>
+              </div>
+              <div class="footer-contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Cibinong, Bogor, Jawa Barat</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>&copy; 2026 Jurusan DKV — SMKN 1 Cibinong. All rights reserved.</small>
+        <div class="footer-bottom-links">
+          <a href="#">Kebijakan Privasi</a>
+          <span class="footer-dot">·</span>
+          <a href="#">Syarat & Ketentuan</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MODALS (UNCHANGED) ===== -->
+  <div id="loginModal" class="modal" style="display:none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Admin Login</h3>
+        <button class="modal-close" onclick="document.getElementById('loginModal').style.display='none'">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <label>Username <input id="username" type="text" /></label>
+      <label>Password <input id="password" type="password" /></label>
+      <div class="modal-actions">
+        <button id="doLogin" class="btn-primary"><span>Login</span></button>
+        <button id="closeModal" class="btn-outline">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="itemModal" class="modal" style="display:none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="itemModalTitle" class="modal-title">Tambah Item</h3>
+        <button class="modal-close" onclick="document.getElementById('itemModal').style.display='none'">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form id="itemForm">
+        <label>Judul / Nama <input id="itemTitle" type="text" required /></label>
+        <label>Deskripsi <textarea id="itemDesc" rows="3"></textarea></label>
+        <label>Image URL <input id="itemImage" type="url" placeholder="https://..." /></label>
+        <label>Video URL <input id="itemVideo" type="url" placeholder="https://www.youtube.com/watch?v=..." /></label>
+        <div id="itemPreview" style="margin-top:8px;"></div>
+        <div class="modal-actions">
+          <button type="button" id="itemCancel" class="btn-outline">Batal</button>
+          <button type="submit" id="itemSubmit" class="btn-primary"><span>Simpan</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../app.js"></script>
+  <script>
+  /* ═══════════════════════════════════════════════════════════
+     OVERRIDE renderNews dari app.js agar tidak override tampilan kita.
+     Harus langsung setelah app.js di-load.
+  ═══════════════════════════════════════════════════════════ */
+
+  (function() {
+    // Fungsi render baru bergaya product-card
+    function renderNewsIndex() {
+      const newsContainer = document.getElementById('newsList');
+      if (!newsContainer) return;
+
+      // Ambil data dari berbagai key yang mungkin dipakai
+      let newsData = [];
+      const priorityKeys = ['dkv_news', 'dkv_news_data', 'news', 'newsItems', 'dkvNews'];
+      for (const key of priorityKeys) {
+        try {
+          const stored = localStorage.getItem(key);
+          if (!stored) continue;
+          const parsed = JSON.parse(stored);
+          const arr = Array.isArray(parsed) ? parsed
+                    : (parsed.items && Array.isArray(parsed.items)) ? parsed.items
+                    : (parsed.news  && Array.isArray(parsed.news))  ? parsed.news
+                    : [];
+          if (arr.length > 0) { newsData = arr; break; }
+        } catch(e) {}
+      }
+
+      const latestNews = [...newsData]
+        .filter(item => item.title && item.title.trim())
+        .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0))
+        .slice(0, 3);
+
+      if (latestNews.length === 0) {
+        newsContainer.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:60px 40px;">
+            <i class="fa-regular fa-newspaper" style="font-size:3rem;color:#DDE2EE;display:block;margin-bottom:16px;"></i>
+            <h3 style="font-family:'Plus Jakarta Sans',sans-serif;color:#0A1628;margin-bottom:8px;">Belum Ada Berita</h3>
+            <p style="color:#6B7FA3;font-size:.875rem;">Saat ini belum ada berita terbaru.</p>
+          </div>`;
+        return;
+      }
+
+      const fmt = (d) => {
+        if (!d) return '';
+        try { return new Date(d).toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'}); } catch(e) { return d; }
+      };
+      const esc = (s) => s ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : '';
+      const img = (p) => {
+        if (!p || !p.trim()) return '';
+        return p;
+      };
+
+      newsContainer.innerHTML = latestNews.map((item, i) => {
+        const src = img(item.image);
+        const rawText = item.excerpt || item.desc || item.content || '';
+        const excerpt = esc(rawText.substring(0, 120) + (rawText.length > 120 ? '...' : ''));
+        const mediaHtml = src
+          ? `<img src="${esc(src)}" alt="${esc(item.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .42s ease;" onerror="this.parentElement.innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#0A1628,#142040);color:rgba(255,255,255,.18);font-size:2.5rem;\\'><i class=\\'fa-solid fa-newspaper\\'></i></div>'">`
+          : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#0A1628,#142040);color:rgba(255,255,255,.18);font-size:2.5rem;"><i class="fa-solid fa-newspaper"></i></div>`;
+        return `
+        <article class="dkv-nc" style="animation:dkvFadeUp .5s ${i*.1}s ease both;">
+          <div class="dkv-nc-media">${mediaHtml}</div>
+          <div class="dkv-nc-body">
+            <h3 class="dkv-nc-title">${esc(item.title)}</h3>
+            <p class="dkv-nc-excerpt">${excerpt}</p>
+          </div>
+          <div class="dkv-nc-footer">
+            <span class="dkv-nc-date"><i class="fa-solid fa-calendar"></i> ${fmt(item.date)}</span>
+          </div>
+        </article>`;
+      }).join('');
+
+      // Hover effect untuk gambar
+      newsContainer.querySelectorAll('.dkv-nc').forEach(card => {
+        const mediaEl = card.querySelector('.dkv-nc-media img');
+        if (!mediaEl) return;
+        card.addEventListener('mouseenter', () => { mediaEl.style.transform = 'scale(1.06)'; });
+        card.addEventListener('mouseleave', () => { mediaEl.style.transform = 'scale(1)'; });
+      });
+    }
+
+    // Override window.renderNews agar app.js & dkv_site.js pakai fungsi kita
+    window.renderNews = renderNewsIndex;
+
+    // Jalankan segera dan saat data berubah
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNewsIndex();
+      setTimeout(renderNewsIndex, 400);
+      setTimeout(renderNewsIndex, 1200);
+      setTimeout(renderNewsIndex, 3000);
+    });
+    window.addEventListener('storage', renderNewsIndex);
+  })();
+  </script>
+  <style>
+  /* ── INDEX NEWS GRID & CARD (class khusus, bebas konflik styles.css) ── */
+  #newsList.dkv-news-grid,
+  .dkv-news-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3,1fr) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+  .dkv-nc {
+    background: #fff;
+    border: 1.5px solid #E1E8F4;
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative;
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    cursor: pointer;
+    padding: 0 !important;
+    height: auto !important;
+    list-style: none;
+  }
+  .dkv-nc:hover { transform: translateY(-8px) !important; box-shadow: 0 16px 56px rgba(10,22,40,.18) !important; border-color: rgba(200,146,42,.25) !important; }
+  .dkv-nc::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg,#6B0F1A,#9A1A2A);
+    transform:scaleX(0); transform-origin:left;
+    transition:transform .28s ease; z-index:2;
+  }
+  .dkv-nc:hover::before { transform:scaleX(1); }
+  .dkv-nc-media {
+    position:relative; aspect-ratio:16/10;
+    overflow:hidden; background:#0A1628; flex-shrink:0;
+    width:100% !important; height:auto !important;
+  }
+  .dkv-nc-body {
+    padding:20px 24px !important;
+    flex:1; display:flex; flex-direction:column; gap:8px;
+  }
+  .dkv-nc-title {
+    font-family:'Plus Jakarta Sans',sans-serif !important;
+    font-size:1.05rem !important; font-weight:700 !important;
+    color:#0A1628 !important; line-height:1.3 !important;
+    letter-spacing:-.01em; margin:0 !important; padding:0 !important;
+    display:-webkit-box !important; -webkit-line-clamp:2 !important;
+    -webkit-box-orient:vertical !important; overflow:hidden !important;
+  }
+  .dkv-nc-excerpt {
+    font-family:'DM Sans',sans-serif !important;
+    font-size:.875rem !important; color:#6B7FA3 !important;
+    line-height:1.65; flex:1; margin:0 !important; padding:0 !important;
+    display:-webkit-box !important; -webkit-line-clamp:3 !important;
+    -webkit-box-orient:vertical !important; overflow:hidden !important;
+  }
+  .dkv-nc-footer {
+    display:flex !important; align-items:center !important;
+    padding:12px 24px !important; border-top:1px solid #E1E8F4 !important;
+  }
+  .dkv-nc-date {
+    display:inline-flex; align-items:center; gap:5px;
+    font-size:.72rem; font-weight:600; color:#6B7FA3;
+    font-family:'DM Sans',sans-serif;
+  }
+  .dkv-nc-date i { color:#6B0F1A; font-size:.68rem; }
+  @keyframes dkvFadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @media (max-width:900px)  { .dkv-news-grid { grid-template-columns:repeat(2,1fr) !important; } }
+  @media (max-width:580px)  { .dkv-news-grid { grid-template-columns:1fr !important; } }
+  </style>
+  <script>
+    // ===== NAVBAR SCROLL EFFECT =====
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ===== DUAL SLIDESHOW =====
+(function() {
+  function initSlideshows() {
+    // 1. BACKGROUND SLIDESHOW (5 detik)
+    const bgSlides = document.querySelectorAll('.bg-slide');
+    if (bgSlides.length > 0) {
+      let bgCurrent = 0;
+      setInterval(() => {
+        bgSlides[bgCurrent].classList.remove('active');
+        bgCurrent = (bgCurrent + 1) % bgSlides.length;
+        bgSlides[bgCurrent].classList.add('active');
+      }, 5000);
+    }
+
+    // 2. HERO IMAGE SLIDESHOW (7 detik) — crossfade mulus tanpa ghosting
+    const heroSlides = document.querySelectorAll('.hero-img-slide');
+    if (heroSlides.length > 0) {
+      // Pastikan slide pertama visible dan ada di atas
+      heroSlides[0].style.zIndex = '2';
+      heroSlides[0].classList.add('active');
+
+      let heroCurrent = 0;
+      const TRANSITION_DURATION = 1200; // harus cocok dengan CSS transition (1.2s)
+
+      setInterval(() => {
+        const prev = heroCurrent;
+        heroCurrent = (heroCurrent + 1) % heroSlides.length;
+
+        // Slide baru muncul di atas (z-index 3), slide lama di bawah (z-index 2)
+        heroSlides[heroCurrent].style.zIndex = '3';
+        heroSlides[heroCurrent].classList.add('active'); // fade in
+
+        // Setelah transisi selesai, sembunyikan slide lama
+        setTimeout(() => {
+          heroSlides[prev].classList.remove('active'); // fade out
+          heroSlides[prev].style.zIndex = '1';
+          heroSlides[heroCurrent].style.zIndex = '2';
+        }, TRANSITION_DURATION);
+
+      }, 7000);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlideshows);
+  } else {
+    initSlideshows();
+  }
+})();
+
+    // ===== HAMBURGER MENU =====
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileClose = document.getElementById('mobileClose');
+
+    function openMobileNav() {
+      mobileNav.classList.add('open');
+      mobileOverlay.classList.add('open');
+      hamburger.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      hamburger.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', openMobileNav);
+    mobileClose.addEventListener('click', closeMobileNav);
+    mobileOverlay.addEventListener('click', closeMobileNav);
+
+    // ===== SCROLL REVEAL ANIMATIONS =====
+    const animEls = document.querySelectorAll('[data-animate]');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const delay = el.dataset.delay || 0;
+            setTimeout(() => el.classList.add('animated'), parseInt(delay));
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.12 });
+      animEls.forEach(el => observer.observe(el));
+    } else {
+      animEls.forEach(el => el.classList.add('animated'));
+    }
+
+    // ===== COUNTER ANIMATION =====
+    function animateCounters() {
+      document.querySelectorAll('.stat-num').forEach(el => {
+        const text = el.textContent;
+        const num = parseInt(text);
+        if (isNaN(num)) return;
+        const suffix = text.replace(/[0-9]/g, '');
+        let start = 0;
+        const step = Math.ceil(num / 40);
+        const timer = setInterval(() => {
+          start = Math.min(start + step, num);
+          el.innerHTML = start + '<span>' + suffix.trim() + '</span>';
+          if (start >= num) clearInterval(timer);
+        }, 30);
+      });
+    }
+    setTimeout(animateCounters, 800);
+
+    // ===== UPDATE GURU COUNT =====
+    function updateGuruCount() {
+      const GURU_KEY = 'dkv_guru_data';
+      const data = localStorage.getItem(GURU_KEY);
+      let guruCount = 0;
+      if (data) {
+        try {
+          const guru = JSON.parse(data);
+          guruCount = Array.isArray(guru) ? guru.length : 0;
+        } catch(e) {
+          guruCount = 0;
+        }
+      }
+      const guruEl = document.getElementById('guruCount');
+      if (guruEl) {
+        guruEl.innerHTML = guruCount + '<span>+</span>';
+      }
+    }
+    updateGuruCount();
+
+
+    function renderNewsOnIndex() {
+  const newsContainer = document.getElementById('newsList');
+  if (!newsContainer) return;
+  
+  // Tampilkan loading terlebih dahulu
+  newsContainer.innerHTML = `
+    <div class="news-loading">
+      <div class="spinner"></div>
+    </div>
+  `;
+  
+  // Coba ambil data dari localStorage
+  let newsData = [];
+  
+  // Prioritas key yang digunakan (sama dengan yang disimpan app.js dan news.html)
+  const priorityKeys = ['dkv_news', 'dkv_news_data', 'news', 'newsItems', 'dkvNews'];
+  
+  for (const key of priorityKeys) {
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          newsData = parsed;
+          console.log(`Loaded ${newsData.length} news from key: ${key}`);
+          break;
+        } else if (parsed.items && Array.isArray(parsed.items) && parsed.items.length > 0) {
+          newsData = parsed.items;
+          console.log(`Loaded ${newsData.length} news from key: ${key}.items`);
+          break;
+        } else if (parsed.news && Array.isArray(parsed.news) && parsed.news.length > 0) {
+          newsData = parsed.news;
+          console.log(`Loaded ${newsData.length} news from key: ${key}.news`);
+          break;
+        }
+      } catch(e) {
+        console.warn(`Failed to parse ${key}:`, e);
+      }
+    }
+  }
+  
+  // Jika masih kosong, coba cek ghost element dari app.js
+  if (newsData.length === 0) {
+    const ghostList = document.getElementById('newsList');
+    if (ghostList && ghostList !== newsContainer) {
+      const ghostItems = ghostList.querySelectorAll('[data-id], article, .news-card, .item-card');
+      if (ghostItems.length > 0) {
+        ghostItems.forEach(el => {
+          newsData.push({
+            id: el.dataset.id || Date.now(),
+            title: el.querySelector('h2, h3, h4, .title')?.textContent || el.dataset.title || 'Berita DKV',
+            desc: el.querySelector('p, .desc, .excerpt')?.textContent || '',
+            excerpt: el.querySelector('p, .desc, .excerpt')?.textContent?.substring(0, 150) || '',
+            category: el.dataset.category || el.dataset.cat || 'info',
+            date: el.dataset.date || new Date().toISOString(),
+            image: el.querySelector('img')?.src || ''
+          });
+        });
+      }
+    }
+  }
+
+  
+  // Urutkan berdasarkan tanggal terbaru dan ambil 3 berita
+  const latestNews = [...newsData]
+    .filter(item => item.title && item.title.trim() !== '')
+    .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0))
+    .slice(0, 3);
+  
+  // TAMPILKAN EMPTY STATE JIKA TIDAK ADA BERITA
+  if (latestNews.length === 0) {
+    newsContainer.innerHTML = `
+      <div class="news-empty">
+        <div class="news-empty-icon">
+          <i class="fa-regular fa-newspaper fa-3x"></i>
+        </div>
+        <h3>Belum Ada Berita</h3>
+        <p>Saat ini belum ada berita terbaru. Silakan cek kembali nanti.</p>
+        <a href="news.html" style="display: inline-block; margin-top: 20px; padding: 10px 24px; background: #c8922a; color: white; border-radius: 30px; text-decoration: none;">
+          <i class="fa-solid fa-arrow-right"></i> Kunjungi Halaman Berita
+        </a>
+      </div>
+    `;
+    return;
+  }
+  
+  // Helper functions
+  const formatDate = (dateString) => {
+    if (!dateString) return 'Belum ditentukan';
+    try {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('id-ID', options);
+    } catch {
+      return dateString;
+    }
+  };
+  
+  const getCategoryLabel = (category) => {
+    const labels = {
+      kegiatan: 'Kegiatan',
+      prestasi: 'Prestasi',
+      info: 'Informasi',
+      berita: 'Berita'
+    };
+    return labels[category?.toLowerCase()] || 'Berita';
+  };
+  
+  const getCategoryIcon = (category) => {
+    const icons = {
+      kegiatan: 'fa-calendar-day',
+      prestasi: 'fa-trophy',
+      info: 'fa-circle-info'
+    };
+    return icons[category?.toLowerCase()] || 'fa-newspaper';
+  };
+  
+  const getImageSrc = (imagePath) => {
+    if (!imagePath) return 'https://placehold.co/600x400/667eea/white?text=DKV+News';
+    if (imagePath.startsWith('http')) return imagePath;
+    if (imagePath.startsWith('../')) return imagePath;
+    if (imagePath.startsWith('gambar/')) return imagePath;
+    return imagePath;
+  };
+  
+  const escapeHtml = (str) => {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  };
+  
+  // Render 3 berita horizontal
+  newsContainer.innerHTML = latestNews.map(item => `
+    <article class="news-card" style="animation: fadeInUp 0.5s ease forwards; opacity: 0;">
+      <img 
+        src="${getImageSrc(item.image)}" 
+        alt="${escapeHtml(item.title)}" 
+        class="news-card-image"
+        onerror="this.src='https://placehold.co/600x400/667eea/white?text=DKV+News'"
+      >
+      <div class="news-card-content">
+        <div class="news-card-category">
+          <i class="fa-solid ${getCategoryIcon(item.category)}"></i>
+          ${getCategoryLabel(item.category)}
+        </div>
+        <div class="news-card-date">
+          <i class="fa-regular fa-calendar"></i>
+          ${formatDate(item.date)}
+        </div>
+        <h3 class="news-card-title">${escapeHtml(item.title)}</h3>
+        <p class="news-card-excerpt">${escapeHtml((item.excerpt || item.desc || item.content || '').substring(0, 120))}${((item.excerpt || item.desc || item.content || '')).length > 120 ? '...' : ''}</p>
+        <a href="news.html" class="news-card-link">
+          Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </article>
+  `).join('');
+}
+
+// Jalankan saat halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+  // Beri sedikit delay untuk memastikan localStorage dari news.html sudah terbaca
+  setTimeout(renderNewsOnIndex, 300);
+  renderNewsOnIndex();
+  
+  // Observer untuk mendeteksi perubahan localStorage
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'dkv_news_data' || e.key === 'news' || e.key === 'newsItems') {
+      console.log('Storage changed, re-rendering news...');
+      renderNewsOnIndex();
+    }
+  });
+});
+
+// Cek setiap 2 detik apakah ada data baru (fallback)
+setInterval(() => {
+  const hasData = localStorage.getItem('dkv_news_data') || localStorage.getItem('news');
+  if (hasData) {
+    renderNewsOnIndex();
+  }
+}, 3000);
+
+
+    // Untuk menyimpan data berita ke localStorage dengan key yang konsisten
+function syncNewsToLocalStorage() {
+  // Ambil data berita dari DOM yang sudah dirender
+  const newsContainer = document.getElementById('newsContainer');
+  if (!newsContainer) return;
+  
+  // Ekstrak data berita dari card yang ada
+  const newsCards = newsContainer.querySelectorAll('.news-card, .news-card-featured, .news-card-mini');
+  if (newsCards.length === 0) return;
+  
+  const newsData = [];
+  newsCards.forEach(card => {
+    // Cari judul
+    let title = '';
+    let desc = '';
+    let category = '';
+    let date = '';
+    let image = '';
+    
+    // Featured card
+    if (card.classList.contains('news-card-featured')) {
+      const titleEl = card.querySelector('.news-featured-title');
+      const descEl = card.querySelector('.news-featured-excerpt');
+      const catEl = card.querySelector('.news-featured-badge');
+      const dateEl = card.querySelector('.news-meta-item');
+      const imgEl = card.querySelector('.news-featured-media img');
+      title = titleEl ? titleEl.textContent : '';
+      desc = descEl ? descEl.textContent : '';
+      category = catEl ? catEl.textContent.trim().toLowerCase().replace(/[^a-z]/g, '') : 'info';
+      date = dateEl ? dateEl.textContent.replace(/[^0-9]/g, '').trim() : new Date().toISOString();
+      image = imgEl ? imgEl.src : '';
+    }
+    // Mini card
+    else if (card.classList.contains('news-card-mini')) {
+      const titleEl = card.querySelector('.news-mini-title');
+      const descEl = card.querySelector('.news-mini-body');
+      const catEl = card.querySelector('.news-mini-badge-img');
+      const dateEl = card.querySelector('.news-mini-date');
+      const imgEl = card.querySelector('.news-mini-media img');
+      title = titleEl ? titleEl.textContent : '';
+      desc = descEl ? descEl.textContent : '';
+      category = catEl ? catEl.textContent.trim().toLowerCase().replace(/[^a-z]/g, '') : 'info';
+      date = dateEl ? dateEl.textContent.replace(/[^0-9]/g, '').trim() : new Date().toISOString();
+      image = imgEl ? imgEl.src : '';
+    }
+    // Regular card
+    else if (card.classList.contains('news-card')) {
+      const titleEl = card.querySelector('.news-card-title');
+      const descEl = card.querySelector('.news-card-excerpt');
+      const catEl = card.querySelector('.news-card-badge, .news-card-category');
+      const dateEl = card.querySelector('.news-card-date');
+      const imgEl = card.querySelector('.news-card-media img');
+      title = titleEl ? titleEl.textContent : '';
+      desc = descEl ? descEl.textContent : '';
+      category = catEl ? catEl.textContent.trim().toLowerCase().replace(/[^a-z]/g, '') : 'info';
+      date = dateEl ? dateEl.textContent.replace(/[^0-9]/g, '').trim() : new Date().toISOString();
+      image = imgEl ? imgEl.src : '';
+    }
+    
+    if (title) {
+      newsData.push({
+        id: Date.now() + Math.random(),
+        title: title,
+        desc: desc,
+        excerpt: desc.substring(0, 150),
+        category: category || 'info',
+        date: date || new Date().toISOString(),
+        image: image || ''
+      });
+    }
+  });
+  
+  // Simpan ke localStorage dengan key yang konsisten
+  if (newsData.length > 0) {
+    localStorage.setItem('dkv_news_data', JSON.stringify(newsData));
+    localStorage.setItem('news', JSON.stringify(newsData));
+    console.log('News data saved to localStorage:', newsData.length, 'items');
+  }
+}
+
+// Panggil setelah berita dirender
+const originalRenderNews = window.renderNews;
+if (originalRenderNews) {
+  window.renderNews = function(items) {
+    originalRenderNews(items);
+    setTimeout(syncNewsToLocalStorage, 500);
+  };
+}
+
+// Juga sync saat halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(syncNewsToLocalStorage, 1000);
+});
+
+// Tampilkan notifikasi bahwa data berita tersedia
+console.log('News.html ready - data akan tersedia untuk index.html');
+
+
+  </script>
+</body>
+</html>

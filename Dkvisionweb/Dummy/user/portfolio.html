@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="id">
+<head><script src="dkv_site.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="../gambar/dkvisionlogo.jpeg" />
+  <title>Portofolio Kreatif — Jurusan DKV SMKN 1 Cibinong</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ===== PORTFOLIO HERO ===== */
+    .portfolio-hero {
+      padding-top: var(--sp-10); padding-bottom: var(--sp-10);
+      background: linear-gradient(145deg, #0A1628 0%, #142040 45%, #1A2F5E 80%, #0A1628 100%);
+      position: relative; overflow: hidden; z-index: 2;
+    }
+    .portfolio-hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
+    }
+    .portfolio-hero::before { content: ''; position: absolute; top: -120px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(200,42,42,0.12) 0%, transparent 70%); pointer-events: none; }
+    .portfolio-hero::after  { content: ''; position: absolute; bottom: -100px; left: -60px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(30,48,96,0.6) 0%, transparent 70%); pointer-events: none; }
+    .portfolio-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 660px; margin-inline: auto; }
+    .portfolio-hero-inner .section-label { background: rgba(186,16,16,0.14); border-color: rgba(177,19,19,0.28); color: var(--gold-bright); }
+    .portfolio-hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: var(--sp-5); letter-spacing: -0.02em; }
+    .portfolio-hero-title em { font-style: italic; color: var(--gold-bright); }
+    .portfolio-hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: var(--sp-8); max-width: 520px; margin-inline: auto; }
+    .portfolio-hero-stats { display: flex; align-items: center; justify-content: center; gap: var(--sp-7); padding-top: var(--sp-7); border-top: 1px solid rgba(255,255,255,0.1); }
+    .portfolio-hero-stat .stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 4px; }
+    .portfolio-hero-stat .stat-num span { color: var(--gold-bright); font-size: 1.3rem; }
+    .portfolio-hero-stat .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
+
+    /* ===== FILTER TABS ===== */
+    .section-portfolio-main { background: var(--surface); padding-block: var(--sp-11); }
+    .filter-bar { display: flex; align-items: center; justify-content: center; gap: var(--sp-2); flex-wrap: wrap; margin-bottom: var(--sp-9); }
+    .filter-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 20px; border-radius: var(--r-full);
+      font-family: var(--font-display); font-size: 0.82rem; font-weight: 600;
+      border: 1.5px solid var(--border-mid); background: var(--white); color: var(--text-muted);
+      cursor: pointer; transition: all var(--t-fast) var(--ease); letter-spacing: 0.02em;
+    }
+    .filter-btn i { font-size: 0.75rem; }
+    .filter-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-pale); }
+    .filter-btn.active { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%); border-color: transparent; color: var(--white); box-shadow: 0 4px 16px rgba(177,19,19,0.3); }
+
+    /* ===== PORTFOLIO CARDS GRID ===== */
+    .portfolio-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      width: 100%;
+    }
+
+    /* ===== PORTO CARD — gaya dari product.html ===== */
+    .porto-card-new {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      position: relative;
+      transition: all var(--t-mid) var(--ease);
+    }
+    .porto-card-new:hover { transform: translateY(-8px); box-shadow: var(--sh-xl); border-color: rgba(177,19,19,0.25); }
+    .porto-card-new::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--t-mid); z-index: 2;
+    }
+    .porto-card-new:hover::before { transform: scaleX(1); }
+
+    /* Gambar karya */
+    .porto-card-media {
+      position: relative; aspect-ratio: 4/3;
+      overflow: hidden;
+      background: linear-gradient(145deg, var(--navy), var(--navy-mid));
+    }
+    .porto-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--t-slow) var(--ease); }
+    .porto-card-new:hover .porto-card-media img { transform: scale(1.06); }
+
+    /* Placeholder jika tidak ada gambar */
+    .porto-card-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--sp-3);
+      color: rgba(255,255,255,0.18);
+    }
+    .porto-card-placeholder i { font-size: 2.5rem; }
+    .porto-card-placeholder span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+
+    /* Teks */
+    .porto-card-body { padding: var(--sp-5) var(--sp-6); flex: 1; display: flex; flex-direction: column; gap: var(--sp-2); }
+    .porto-card-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--navy); line-height: 1.3; margin: 0; letter-spacing: -0.01em; }
+    .porto-card-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; margin: 0; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* Footer card */
+    .porto-card-footer { display: flex; align-items: center; padding: var(--sp-4) var(--sp-6); border-top: 1px solid var(--border); }
+    .porto-card-category { display: inline-flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; color: var(--text-muted); }
+    .porto-card-category i { color: var(--gold); font-size: 0.68rem; }
+
+    /* Hidden saat filter */
+    .porto-card-new.hidden { display: none !important; }
+
+    /* ===== EMPTY STATE ===== */
+    .porto-empty { grid-column: 1/-1; text-align: center; padding: var(--sp-11) var(--sp-5); }
+    .porto-empty-icon { width: 72px; height: 72px; background: var(--surface-2); border-radius: var(--r-xl); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--border); margin: 0 auto var(--sp-5); }
+    .porto-empty h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: var(--sp-2); }
+    .porto-empty p { font-size: 0.88rem; color: var(--text-muted); max-width: 320px; margin-inline: auto; }
+
+    /* ===== SOSMED ===== */
+    .section-porto-social { background: var(--white); padding-block: var(--sp-11); }
+    .social-platforms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-5); }
+    .social-platform-card { border-radius: var(--r-xl); padding: var(--sp-8) var(--sp-7); position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 240px; transition: transform var(--t-mid) var(--ease), box-shadow var(--t-mid); text-decoration: none; }
+    .social-platform-card:hover { transform: translateY(-6px); box-shadow: var(--sh-xl); }
+    .social-platform-card.instagram { background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); }
+    .social-platform-card.tiktok { background: linear-gradient(135deg, #010101 0%, #1a1a2e 60%, #010101 100%); border: 1.5px solid rgba(105,201,208,0.25); }
+    .social-platform-card::before { content: ''; position: absolute; top: -60px; right: -40px; width: 220px; height: 220px; background: rgba(255,255,255,0.07); border-radius: 50%; pointer-events: none; }
+    .social-platform-card::after  { content: ''; position: absolute; bottom: -80px; left: -40px; width: 260px; height: 260px; background: rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none; }
+    .social-platform-icon { font-size: 2.8rem; color: rgba(255,255,255,0.9); margin-bottom: var(--sp-4); position: relative; z-index: 1; }
+    .social-platform-card.tiktok .social-platform-icon { color: #69C9D0; text-shadow: 2px 2px 0 #EE1D52; }
+    .social-platform-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--white); margin-bottom: var(--sp-2); position: relative; z-index: 1; }
+    .social-platform-handle { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: var(--sp-5); position: relative; z-index: 1; }
+    .social-platform-desc { font-size: 0.875rem; color: rgba(255,255,255,0.7); line-height: 1.7; flex: 1; position: relative; z-index: 1; }
+    .social-platform-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--sp-6); background: rgba(255,255,255,0.15); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.25); color: var(--white); padding: 10px 22px; border-radius: var(--r-full); font-size: 0.82rem; font-weight: 700; font-family: var(--font-display); position: relative; z-index: 1; width: fit-content; transition: background var(--t-fast), border-color var(--t-fast); }
+    .social-platform-card:hover .social-platform-cta { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); }
+
+    /* ===== CTA ===== */
+    .section-porto-cta { background: var(--navy); padding-block: var(--sp-10); text-align: center; position: relative; z-index: 2; overflow: hidden; }
+    .section-porto-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(186,16,16,0.14) 0%, transparent 70%); pointer-events: none; }
+    .section-porto-cta-inner { position: relative; z-index: 2; max-width: 560px; margin-inline: auto; }
+    .section-porto-cta h2 { font-family: var(--font-display); font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; color: var(--white); margin-bottom: var(--sp-4); line-height: 1.2; }
+    .section-porto-cta h2 em { font-style: italic; color: var(--gold-bright); }
+    .section-porto-cta p { font-size: 0.975rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: var(--sp-7); }
+    .porto-cta-actions { display: flex; justify-content: center; gap: var(--sp-4); flex-wrap: wrap; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1000px) { .portfolio-cards-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) {
+      .portfolio-cards-grid { grid-template-columns: 1fr; }
+      .social-platforms-grid { grid-template-columns: 1fr; }
+      .portfolio-hero-stats { gap: var(--sp-5); flex-wrap: wrap; }
+    }
+    @media (max-width: 480px) {
+      .portfolio-hero-stats { flex-direction: column; gap: var(--sp-4); }
+      .porto-cta-actions { flex-direction: column; align-items: center; }
+      .filter-bar { gap: var(--sp-1); }
+      .filter-btn { padding: 7px 14px; font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body id="portfolio-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+        <div class="logo-text">
+          <span class="logo-name">Jurusan DKV</span>
+          <span class="logo-tagline">SMKN 1 Cibinong</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="news.html" class="nav-link">News</a>
+        <a href="curriculum.html" class="nav-link">Kurikulum</a>
+        <a href="portfolio.html" class="nav-link active">Portofolio</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="https://smkn1cibinong.sch.id" target="_blank" rel="noopener" class="nav-link nav-external">
+          SMKN 1 Cibinong <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+        </a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+  <nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+        <div class="logo-text">
+          <span class="logo-name">Jurusan DKV</span>
+          <span class="logo-tagline">SMKN 1 Cibinong</span>
+        </div>
+      </div>
+      <button class="mobile-nav-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About</a>
+      <a href="news.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> News</a>
+      <a href="curriculum.html" class="mobile-nav-link"><i class="fa-solid fa-book-open"></i> Kurikulum</a>
+      <a href="portfolio.html" class="mobile-nav-link active"><i class="fa-solid fa-images"></i> Portofolio</a>
+      <a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+      <a href="https://smkn1cibinong.sch.id" target="_blank" class="mobile-nav-link"><i class="fa-solid fa-school"></i> SMKN 1 Cibinong</a>
+    </div>
+    <div class="mobile-nav-social">
+      <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://facebook.com/smkn1cibinong" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </nav>
+
+  <!-- Background Slideshow -->
+  <div class="background-slideshow">
+    <div class="slide active" style="background-image: url('gambar/webpage.jpg');"></div>
+    <div class="slide" style="background-image: url('gambar/dkvlab.jpg');"></div>
+  </div>
+  <div class="background-overlay"></div>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="portfolio-hero">
+      <div class="portfolio-hero-grid"></div>
+      <div class="container">
+        <div class="portfolio-hero-inner" data-animate="fadeUp">
+          <div class="section-label">Karya Siswa</div>
+          <h1 class="portfolio-hero-title">Portofolio <em>Kreatif</em></h1>
+          <p class="portfolio-hero-desc">Kumpulan karya terbaik siswa DKV di bidang desain grafis, animasi, video, dan multimedia — bukti nyata kreativitas generasi muda SMKN 1 Cibinong.</p>
+          <div class="portfolio-hero-stats">
+            <div class="portfolio-hero-stat">
+              <div class="stat-num" id="totalKaryaCount">0<span>+</span></div>
+              <div class="stat-label">Karya Tersimpan</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="portfolio-hero-stat">
+              <div class="stat-num">2<span></span></div>
+              <div class="stat-label">Kategori Karya</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="portfolio-hero-stat">
+              <div class="stat-num">3<span>+</span></div>
+              <div class="stat-label">Penghargaan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTFOLIO UTAMA ===== -->
+    <section class="section-portfolio-main">
+      <div class="container">
+
+        <!-- Filter -->
+        <div class="filter-bar" data-animate="fadeUp">
+          <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-grip"></i> Semua Karya</button>
+          <button class="filter-btn" data-filter="Desain Grafis"><i class="fa-solid fa-pen-nib"></i> Desain Grafis</button>
+          <button class="filter-btn" data-filter="Fotografi"><i class="fa-solid fa-camera"></i> Fotografi</button>
+        </div>
+
+        <div class="section-header" data-animate="fadeUp" style="margin-bottom: var(--sp-7);">
+          <div class="section-label">Galeri Karya</div>
+          <h2 class="section-title">Karya dari <em>Siswa DKV</em></h2>
+          <p class="section-desc">Kumpulan karya siswa DKV</p>
+        </div>
+
+        <!-- Portfolio dinamis -->
+        <div id="portfolioList"></div>
+
+        <!-- Static showcase (tampil jika data kosong) -->
+        <div id="portfolioShowcase">
+          <div class="portfolio-cards-grid" data-animate="fadeUp">
+
+            <article class="porto-card-new" data-category="Desain Grafis">
+              <div class="porto-card-media"><div class="porto-card-placeholder"><i class="fa-solid fa-pen-fancy"></i><span>Desain Grafis</span></div></div>
+              <div class="porto-card-body">
+                <h3 class="porto-card-title">Poster Digital Art</h3>
+                <p class="porto-card-desc">Karya poster dengan konsep futuristik menggunakan Adobe Illustrator.</p>
+              </div>
+              <div class="porto-card-footer"><span class="porto-card-category"><i class="fa-solid fa-pen-nib"></i> Desain Grafis</span></div>
+            </article>
+
+            <article class="porto-card-new" data-category="Fotografi">
+              <div class="porto-card-media"><div class="porto-card-placeholder"><i class="fa-solid fa-camera-retro"></i><span>Fotografi</span></div></div>
+              <div class="porto-card-body">
+                <h3 class="porto-card-title">Urban Photography</h3>
+                <p class="porto-card-desc">Dokumentasi visual suasana kota dengan teknik komposisi dramatis.</p>
+              </div>
+              <div class="porto-card-footer"><span class="porto-card-category"><i class="fa-solid fa-camera"></i> Fotografi</span></div>
+            </article>
+
+            <article class="porto-card-new" data-category="Desain Grafis">
+              <div class="porto-card-media"><div class="porto-card-placeholder"><i class="fa-solid fa-bezier-curve"></i><span>Desain Grafis</span></div></div>
+              <div class="porto-card-body">
+                <h3 class="porto-card-title">Brand Identity</h3>
+                <p class="porto-card-desc">Perancangan logo dan identitas visual untuk UMKM lokal.</p>
+              </div>
+              <div class="porto-card-footer"><span class="porto-card-category"><i class="fa-solid fa-pen-nib"></i> Desain Grafis</span></div>
+            </article>
+
+            <article class="porto-card-new" data-category="Fotografi">
+              <div class="porto-card-media"><div class="porto-card-placeholder"><i class="fa-solid fa-tree"></i><span>Fotografi</span></div></div>
+              <div class="porto-card-body">
+                <h3 class="porto-card-title">Nature Landscape</h3>
+                <p class="porto-card-desc">Keindahan alam pegunungan melalui lensa kamera digital.</p>
+              </div>
+              <div class="porto-card-footer"><span class="porto-card-category"><i class="fa-solid fa-camera"></i> Fotografi</span></div>
+            </article>
+
+            <article class="porto-card-new" data-category="Desain Grafis">
+              <div class="porto-card-media"><div class="porto-card-placeholder"><i class="fa-solid fa-mobile-alt"></i><span>Desain Grafis</span></div></div>
+              <div class="porto-card-body">
+                <h3 class="porto-card-title">UI/UX Design</h3>
+                <p class="porto-card-desc">Desain antarmuka aplikasi mobile untuk startup edukasi.</p>
+              </div>
+              <div class="porto-card-footer"><span class="porto-card-category"><i class="fa-solid fa-pen-nib"></i> Desain Grafis</span></div>
+            </article>
+
+            <article class="porto-card-new" data-category="Fotografi">
+              <div class="porto-card-media"><div class="porto-card-placeholder"><i class="fa-solid fa-microphone"></i><span>Fotografi</span></div></div>
+              <div class="porto-card-body">
+                <h3 class="porto-card-title">Event Documentation</h3>
+                <p class="porto-card-desc">Coverage acara pentas seni dan budaya sekolah.</p>
+              </div>
+              <div class="porto-card-footer"><span class="porto-card-category"><i class="fa-solid fa-camera"></i> Fotografi</span></div>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== SOSMED ===== -->
+    <section class="section-porto-social">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <div class="section-label">Ikuti Kami</div>
+          <h2 class="section-title">Karya Kami di <em>Sosial Media</em></h2>
+          <p class="section-desc">Temukan karya-karya terbaru siswa DKV dan update kegiatan jurusan di platform sosial media kami</p>
+        </div>
+        <div class="social-platforms-grid">
+          <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="social-platform-card instagram" data-animate="fadeUp" data-delay="0">
+            <div class="social-platform-icon"><i class="fa-brands fa-instagram"></i></div>
+            <div class="social-platform-name">Instagram</div>
+            <div class="social-platform-handle">@smkn1cbn_official</div>
+            <p class="social-platform-desc">Ikuti akun Instagram resmi SMKN 1 Cibinong untuk melihat karya terbaru, behind the scene, kegiatan sekolah, dan update para siswa setiap harinya.</p>
+            <div class="social-platform-cta">Kunjungi Instagram <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></div>
+          </a>
+          <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" rel="noopener" class="social-platform-card tiktok" data-animate="fadeUp" data-delay="120">
+            <div class="social-platform-icon"><i class="fa-brands fa-tiktok"></i></div>
+            <div class="social-platform-name">TikTok</div>
+            <div class="social-platform-handle">@smkn1_cibinong</div>
+            <p class="social-platform-desc">Saksikan konten kreatif, video pendek, dan reels karya siswa di TikTok resmi SMKN 1 Cibinong — dari animasi hingga video dokumentasi berkualitas.</p>
+            <div class="social-platform-cta">Kunjungi TikTok <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section-porto-cta">
+      <div class="container">
+        <div class="section-porto-cta-inner" data-animate="fadeUp">
+          <h2>Ingin Karya Kamu <em>Tampil di Sini?</em></h2>
+          <p>Jadilah bagian dari jurusan DKV SMKN 1 Cibinong dan wujudkan kreativitasmu menjadi karya nyata yang diakui oleh industri kreatif.</p>
+          <div class="porto-cta-actions">
+            <a href="contact.html" class="btn-primary"><span>Hubungi Kami</span><i class="fa-solid fa-arrow-right"></i></a>
+            <a href="curriculum.html" class="btn-outline" style="border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.75);"><i class="fa-solid fa-book-open"></i><span>Lihat Kurikulum</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-top"><div class="container"><div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+          <div class="logo-text"><span class="logo-name">Jurusan DKV</span><span class="logo-tagline">SMKN 1 Cibinong</span></div>
+        </div>
+        <p class="footer-brand-desc">Mencetak generasi kreatif dan profesional di bidang Desain Komunikasi Visual sejak 2022.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="footer-social"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://facebook.com/smkn1cibinong" target="_blank" class="footer-social"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="footer-social"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" class="footer-social"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Navigasi</h4>
+        <div class="footer-links">
+          <a href="index.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Beranda</a>
+          <a href="about.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Tentang</a>
+          <a href="curriculum.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Kurikulum</a>
+          <a href="contact.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Kontak</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Konten</h4>
+        <div class="footer-links">
+          <a href="portfolio.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Portofolio</a>
+          <a href="news.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Berita</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Kontak</h4>
+        <div class="footer-contact-items">
+          <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:cibionebogor@yahoo.com">cibionebogor@yahoo.com</a></div>
+          <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+622518663846">(0251) 8663846</a></div>
+          <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span>Cibinong, Bogor, Jawa Barat</span></div>
+        </div>
+      </div>
+    </div></div></div>
+    <div class="footer-bottom"><div class="container">
+      <small>&copy; 2026 Jurusan DKV — SMKN 1 Cibinong. All rights reserved.</small>
+      <div class="footer-bottom-links"><a href="#">Kebijakan Privasi</a><span class="footer-dot">·</span><a href="#">Syarat &amp; Ketentuan</a></div>
+    </div></div>
+  </footer>
+
+  <script>
+    // ============ FUNGSI UTAMA PORTOFOLIO ============
+    const PORTFOLIO_KEY = 'dkv_portfolio';
+
+    function normalizeCategory(category) {
+      return String(category || '').trim().toLowerCase();
+    }
+
+    function standardCategory(category) {
+      const normalized = normalizeCategory(category);
+      if (normalized === 'fotografi') return 'Fotografi';
+      if (['desain grafis','desaingrafis','desain','grafis'].includes(normalized)) return 'Desain Grafis';
+      return category ? String(category).trim() : 'Desain Grafis';
+    }
+
+    function loadPortfolio() {
+      const data = localStorage.getItem(PORTFOLIO_KEY);
+      let portfolio = data ? JSON.parse(data) : [];
+      return portfolio.map(item => { item.category = standardCategory(item.category); return item; });
+    }
+
+    function updateTotalKarya() {
+      const el = document.getElementById('totalKaryaCount');
+      if (el) el.innerHTML = loadPortfolio().length + '<span>+</span>';
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const d = document.createElement('div');
+      d.textContent = text;
+      return d.innerHTML;
+    }
+
+    // ── Render kartu portfolio ──────────────────────────────────────────────
+    function renderPortfolio() {
+      const container = document.getElementById('portfolioList');
+      const showcase  = document.getElementById('portfolioShowcase');
+      const data      = loadPortfolio();
+      if (!container) return;
+
+      if (data.length === 0) {
+        if (showcase) showcase.style.display = '';
+        container.innerHTML = '';
+        updateTotalKarya();
+        applyFilter();
+        return;
+      }
+
+      if (showcase) showcase.style.display = 'none';
+
+      const grid = document.createElement('div');
+      grid.className = 'portfolio-cards-grid';
+
+      data.forEach(item => {
+        const cat     = standardCategory(item.category);
+        const catIcon = cat === 'Fotografi' ? 'fa-camera' : 'fa-pen-nib';
+        const imgSrc  = item.image && item.image.startsWith('data:') ? item.image : (item.image || '');
+        const mediaHtml = imgSrc
+          ? `<img src="${imgSrc}" alt="${escapeHtml(item.title)}" loading="lazy">`
+          : `<div class="porto-card-placeholder"><i class="fa-solid fa-image"></i><span>${escapeHtml(cat)}</span></div>`;
+
+        const desc = item.description || '';
+        const card = document.createElement('article');
+        card.className = 'porto-card-new';
+        card.setAttribute('data-category', cat);
+        card.innerHTML = `
+          <div class="porto-card-media">${mediaHtml}</div>
+          <div class="porto-card-body">
+            <h3 class="porto-card-title">${escapeHtml(item.title)}</h3>
+            ${desc ? `<p class="porto-card-desc">${escapeHtml(desc.substring(0,120))}${desc.length>120?'...':''}</p>` : ''}
+          </div>
+          <div class="porto-card-footer">
+            <span class="porto-card-category"><i class="fa-solid ${catIcon}"></i> ${escapeHtml(cat)}</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      container.innerHTML = '';
+      container.appendChild(grid);
+      updateTotalKarya();
+      applyFilter();
+    }
+
+    // ── Filter ──────────────────────────────────────────────────────────────
+    let currentFilter = 'all';
+
+    function applyFilter() {
+      const fv       = normalizeCategory(currentFilter);
+      const showcase = document.getElementById('portfolioShowcase');
+      const dynCards = document.querySelectorAll('#portfolioList .porto-card-new');
+      const stcCards = document.querySelectorAll('#portfolioShowcase .porto-card-new');
+      const hasDyn   = dynCards.length > 0;
+
+      if (hasDyn) {
+        if (showcase) showcase.style.display = 'none';
+        dynCards.forEach(c => {
+          const cat = normalizeCategory(c.getAttribute('data-category'));
+          c.classList.toggle('hidden', fv !== 'all' && cat !== fv);
+        });
+      } else {
+        if (showcase) showcase.style.display = '';
+        stcCards.forEach(c => {
+          const cat = normalizeCategory(c.getAttribute('data-category'));
+          c.classList.toggle('hidden', fv !== 'all' && cat !== fv);
+        });
+      }
+    }
+
+    function setupFilters() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.dataset.filter || 'all';
+          applyFilter();
+        });
+      });
+      applyFilter();
+    }
+
+    // ── Init ────────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function () {
+      const header = document.getElementById('siteHeader');
+      window.addEventListener('scroll', () => header && header.classList.toggle('scrolled', window.scrollY > 40));
+
+      // Slideshow
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length) {
+        let cur = 0;
+        setInterval(() => {
+          slides[cur].classList.remove('active');
+          cur = (cur + 1) % slides.length;
+          slides[cur].classList.add('active');
+        }, 6000);
+      }
+
+      // Hamburger
+      const hbg = document.getElementById('hamburger');
+      const mnav = document.getElementById('mobileNav');
+      const mov  = document.getElementById('mobileOverlay');
+      const mc   = document.getElementById('mobileClose');
+      function openNav()  { mnav.classList.add('open'); mov.classList.add('open'); hbg.classList.add('active'); document.body.style.overflow='hidden'; }
+      function closeNav() { mnav.classList.remove('open'); mov.classList.remove('open'); hbg.classList.remove('active'); document.body.style.overflow=''; }
+      if (hbg) hbg.addEventListener('click', openNav);
+      if (mc)  mc.addEventListener('click', closeNav);
+      if (mov) mov.addEventListener('click', closeNav);
+
+      // Scroll reveal
+      const animEls = document.querySelectorAll('[data-animate]');
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add('animated'), parseInt(e.target.dataset.delay || 0));
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        animEls.forEach(el => obs.observe(el));
+      } else {
+        animEls.forEach(el => el.classList.add('animated'));
+      }
+
+      renderPortfolio();
+      setupFilters();
+
+      // Pantau perubahan dari tab admin
+      window.addEventListener('storage', e => { if (e.key === PORTFOLIO_KEY) renderPortfolio(); });
+    });
+  </script>
+</body>
+</html>

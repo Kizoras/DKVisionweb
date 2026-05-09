@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="id">
+<head><script src="dkv_site.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="../gambar/dkvisionlogo.jpeg" />
+  <title>Tentang Jurusan DKV — SMKN 1 Cibinong</title>
+
+  <!-- Fonts: Plus Jakarta Sans + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ── Font Override untuk About Page ── */
+    :root {
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    /* ── About Hero ── */
+    .about-hero {
+      padding-top: var(--sp-10);
+      padding-bottom: var(--sp-10);
+      background: linear-gradient(150deg, var(--navy) 0%, #142040 50%, #1c3060 100%);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: -160px; right: -120px;
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, rgba(222, 31, 31, 0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(30,48,96,0.7) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-10);
+      align-items: center;
+    }
+
+    .about-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: 6px 16px;
+      background: rgba(186, 16, 16, 0.14);
+      border: 1px solid rgba(177, 19, 19, 0.28);
+      border-radius: var(--r-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: var(--sp-6);
+    }
+
+    .about-hero-eyebrow i { font-size: 0.75rem; }
+
+    .about-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      letter-spacing: -0.025em;
+      margin-bottom: var(--sp-5);
+    }
+
+    .about-hero-title em {
+      font-style: italic;
+      color: var(--gold-bright);
+      font-weight: 700;
+    }
+
+    .about-hero-desc {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.525);
+      line-height: 1.8;
+      max-width: 440px;
+      margin-bottom: var(--sp-7);
+    }
+
+    .about-hero-actions {
+      display: flex;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+    }
+
+    .about-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: 13px 28px;
+      border-radius: var(--r-full);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.875rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(107, 15, 26, 0.30);
+      text-decoration: none;
+    }
+
+    .about-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(107, 15, 26, 0.45);
+    }
+
+    .about-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: 12px 24px;
+      border-radius: var(--r-full);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.875rem;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .about-btn-ghost:hover {
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Right side: stats cards */
+    .about-hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+
+    .about-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+    }
+
+    .about-stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5) var(--sp-4);
+      text-align: center;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+
+    .about-stat-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(107, 15, 26, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .about-stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .about-stat-num span { color: var(--gold-bright); }
+
+    .about-stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    .about-hero-quote {
+      background: rgba(107, 15, 26, 0.1);
+      border: 1px solid rgba(107, 15, 26, 0.2);
+      border-left: 4px solid var(--gold);
+      border-radius: var(--r-md);
+      padding: var(--sp-5) var(--sp-6);
+    }
+
+    .about-hero-quote p {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    .about-hero-quote cite {
+      display: block;
+      margin-top: var(--sp-3);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      font-style: normal;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Section: Visi & Misi ── */
+    .section-visi {
+      background: var(--white);
+      padding-block: var(--sp-11);
+    }
+
+    .visi-misi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-6);
+    }
+
+    .visi-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-8) var(--sp-7);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .visi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+    }
+
+    .visi-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sh-lg);
+      border-color: rgba(200,146,42,0.2);
+    }
+
+    .visi-card-header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-6);
+    }
+
+    .visi-card-icon-wrap {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      box-shadow: 0 6px 20px rgba(10,22,40,0.18);
+    }
+
+    .visi-card-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+
+    .visi-card-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+
+    .dynamic-content {
+      font-family: var(--font-body);
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    .dynamic-content p { margin-bottom: var(--sp-4); }
+    .dynamic-content p:last-child { margin-bottom: 0; }
+
+    /* ── Section: Tim Pengajar ── */
+    .section-teachers {
+      background: var(--surface);
+      padding-block: var(--sp-11);
+    }
+
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--sp-5);
+    }
+
+    .teacher-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--sh-lg);
+      border-color: rgba(200,146,42,0.2);
+    }
+
+    .teacher-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: linear-gradient(145deg, var(--navy) 0%, var(--navy-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.teacher-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.teacher-photo-placeholder::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(10,22,40,0.4), transparent);
+    pointer-events: none;
+}
+
+    .teacher-info {
+      padding: var(--sp-5) var(--sp-4) var(--sp-5);
+    }
+
+    .teacher-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .teacher-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: var(--sp-3);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .teacher-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(5,150,105,0.08);
+      color: #059669;
+      padding: 5px 14px;
+      border-radius: var(--r-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      border: 1px solid rgba(5,150,105,0.15);
+      letter-spacing: 0.03em;
+    }
+
+    /* Status-specific colors */
+    .teacher-meta.status-aktif {
+      background: rgba(5,150,105,0.08);
+      color: #059669;
+      border: 1px solid rgba(5,150,105,0.15);
+    }
+
+    .teacher-meta.status-merah {
+      background: rgba(239,68,68,0.08);
+      color: #dc2626;
+      border: 1px solid rgba(239,68,68,0.15);
+    }
+
+    .teacher-meta.status-kuning {
+      background: rgba(245, 11, 11, 0.08);
+      color: #d90606;
+      border: 1px solid rgba(245, 11, 11, 0.15);
+    }
+
+    /* ── Section: Tentang Sekolah strip ── */
+    .section-school-strip {
+      background: var(--navy);
+      padding-block: var(--sp-9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-school-strip::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(200, 42, 42, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .school-strip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-6);
+      flex-wrap: wrap;
+    }
+
+    .school-strip-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: var(--sp-2);
+      letter-spacing: -0.02em;
+    }
+
+    .school-strip-text p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 440px;
+      line-height: 1.7;
+    }
+
+    .school-strip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: 13px 28px;
+      border-radius: var(--r-full);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.875rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(200, 42, 42, 0.3);
+      flex-shrink: 0;
+    }
+
+    .school-strip-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200, 42, 42, 0.45);
+    }
+
+    /* ── Scroll Animation ── */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    [data-animate].animated {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .about-hero-grid { grid-template-columns: 1fr; }
+      .about-hero-right { order: -1; }
+      .visi-misi-grid { grid-template-columns: 1fr; }
+      .teachers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .about-stat-row { grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); }
+      .about-stat-num { font-size: 1.5rem; }
+      .about-hero-title { font-size: 2rem; }
+      .about-hero-actions { flex-direction: column; }
+      .about-btn-primary, .about-btn-ghost { justify-content: center; }
+      .teachers-grid { grid-template-columns: 1fr 1fr; }
+      .school-strip-inner { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 420px) {
+      .teachers-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body id="about-page">
+
+  
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+        <div class="logo-text">
+          <span class="logo-name">Jurusan DKV</span>
+          <span class="logo-tagline">SMKN 1 Cibinong</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="news.html" class="nav-link">News</a>
+        <a href="curriculum.html" class="nav-link">Kurikulum</a>
+        <a href="portfolio.html" class="nav-link">Portofolio</a>
+        
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="https://smkn1cibinong.sch.id" target="_blank" rel="noopener" class="nav-link nav-external">
+          SMKN 1 Cibinong <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+        </a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+  <nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+        <div class="logo-text">
+          <span class="logo-name">Jurusan DKV</span>
+          <span class="logo-tagline">SMKN 1 Cibinong</span>
+        </div>
+      </div>
+      <button class="mobile-nav-close" id="mobileClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="about.html" class="mobile-nav-link active"><i class="fa-solid fa-circle-info"></i> About</a>
+      <a href="news.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> News</a>
+      <a href="curriculum.html" class="mobile-nav-link"><i class="fa-solid fa-book-open"></i> Kurikulum</a>
+      <a href="portfolio.html" class="mobile-nav-link"><i class="fa-solid fa-images"></i> Portofolio</a>
+      
+      <a href="contact.html" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+      <a href="https://smkn1cibinong.sch.id" target="_blank" class="mobile-nav-link">
+        <i class="fa-solid fa-school"></i> SMKN 1 Cibinong
+      </a>
+    </div>
+    <div class="mobile-nav-social">
+      <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://facebook.com/smkn1cibinong" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </nav>
+
+   <!-- Background Slideshow -->
+  <div class="background-slideshow">
+    <div class="slide active" style="background-image: url('gambar/webpage.jpg');"></div>
+    <div class="slide" style="background-image: url('gambar/dkvlab.jpg');"></div>
+  </div>
+  <div class="background-overlay"></div>
+
+  <main>
+
+    <!-- ===== ABOUT HERO ===== -->
+    <section class="about-hero">
+      <div class="container">
+        <div class="about-hero-grid">
+
+          <!-- Left: Text -->
+          <div class="about-hero-left" data-animate>
+            <div class="about-hero-eyebrow">
+              <i class="fa-solid fa-circle-info"></i>
+              Tentang Kami
+            </div>
+
+            <h1 class="about-hero-title">
+              Desain<br>
+              Komunikasi<br>
+              <em>Visual</em>
+            </h1>
+
+            <p class="about-hero-desc">
+              Menciptakan generasi kreatif yang siap bersaing di industri kreatif global
+              melalui pendidikan vokasi berkualitas tinggi.
+            </p>
+
+            <div class="about-hero-actions">
+              <a href="curriculum.html" class="about-btn-primary">
+                <i class="fa-solid fa-book-open"></i>
+                Lihat Kurikulum
+              </a>
+              <a href="contact.html" class="about-btn-ghost">
+                <i class="fa-solid fa-envelope"></i>
+                Hubungi Kami
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Stats + Quote -->
+          <div class="about-hero-right" data-animate>
+            <div class="about-stat-row">
+              <div class="about-stat-card">
+                <div class="about-stat-num">2022<span></span></div>
+                <div class="about-stat-label">Tahun Berdiri</div>
+              </div>
+              <div class="about-stat-card">
+                <div class="about-stat-num">100<span>+</span></div>
+                <div class="about-stat-label">Siswa Aktif</div>
+              </div>
+              <div class="about-stat-card">
+                <div class="about-stat-num">15<span>+</span></div>
+                <div class="about-stat-label">Tenaga Pengajar</div>
+              </div>
+            </div>
+
+            <div class="about-hero-quote">
+              <p>
+                "Jurusan DKV hadir untuk membekali generasi muda dengan keterampilan desain
+                yang relevan dengan kebutuhan industri kreatif modern."
+              </p>
+              <cite>— Kepala Program Keahlian DKV, SMKN 1 Cibinong <br>Pak Andang</cite>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VISI & MISI ===== -->
+    <section class="section-visi">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <div class="section-label">Arah & Tujuan</div>
+          <h2 class="section-title">Visi &amp; <em>Misi</em></h2>
+          <p class="section-desc">Landasan nilai yang mengarahkan seluruh kegiatan pembelajaran di Jurusan DKV</p>
+        </div>
+
+        <div class="visi-misi-grid">
+          <div class="visi-card" data-animate>
+            <div class="visi-card-header">
+              <div class="visi-card-icon-wrap"><i class="fa-regular fa-eye"></i></div>
+              <div>
+                <div class="visi-card-title">Visi</div>
+                <div class="visi-card-subtitle">Program Keahlian</div>
+              </div>
+            </div>
+            <div id="visiMisiContent" class="dynamic-content">
+              <div class="loading">Memuat konten...</div>
+            </div>
+          </div>
+
+          <div class="visi-card" data-animate>
+            <div class="visi-card-header">
+              <div class="visi-card-icon-wrap"><i class="fa-solid fa-bullseye"></i></div>
+              <div>
+                <div class="visi-card-title">Misi</div>
+                <div class="visi-card-subtitle">Langkah &amp; Strategi</div>
+              </div>
+            </div>
+            <div id="strukturContent" class="dynamic-content">
+              <div class="loading">Memuat konten...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TIM PENGAJAR ===== -->
+    <section class="section-teachers">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <div class="section-label">Pengajar</div>
+          <h2 class="section-title">Tim <em>Profesional</em></h2>
+          <p class="section-desc">Didukung oleh tenaga pengajar berpengalaman di bidang desain komunikasi visual</p>
+        </div>
+        <div class="teachers-grid" id="teachersGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===== SCHOOL STRIP ===== -->
+    <section class="section-school-strip">
+      <div class="container">
+        <div class="school-strip-inner">
+          <div class="school-strip-text">
+            <h3>Bagian dari SMKN 1 Cibinong</h3>
+            <p>Jurusan DKV bernaung di bawah SMKN 1 Cibinong, salah satu sekolah kejuruan terbaik di Kabupaten Bogor. Kunjungi website resmi sekolah untuk informasi lebih lengkap.</p>
+          </div>
+          <a href="https://smkn1cibinong.sch.id" target="_blank" rel="noopener" class="school-strip-btn">
+            <i class="fa-solid fa-school"></i>
+            Kunjungi Website Sekolah
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+              <div class="logo-text">
+                <span class="logo-name">Jurusan DKV</span>
+                <span class="logo-tagline">SMKN 1 Cibinong</span>
+              </div>
+            </div>
+            <p class="footer-brand-desc">
+              Mencetak generasi kreatif dan profesional di bidang Desain Komunikasi Visual sejak 2022.
+            </p>
+            <div class="footer-socials">
+              <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="footer-social" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://facebook.com/smkn1cibinong" target="_blank" class="footer-social" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="footer-social" aria-label="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" class="footer-social" aria-label="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Navigasi</h4>
+            <div class="footer-links">
+              <a href="index.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Beranda</a>
+              <a href="about.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Tentang</a>
+              <a href="curriculum.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Kurikulum</a>
+              <a href="contact.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Kontak</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Konten</h4>
+            <div class="footer-links">
+              <a href="portfolio.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Portofolio</a>
+              
+              <a href="news.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Berita</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Kontak</h4>
+            <div class="footer-contact-items">
+              <div class="footer-contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:cibionebogor@yahoo.com">cibionebogor@yahoo.com</a>
+              </div>
+              <div class="footer-contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+622518663846">(0251) 8663846</a>
+              </div>
+              <div class="footer-contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Cibinong, Bogor, Jawa Barat</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <small>&copy; 2026 Jurusan DKV — SMKN 1 Cibinong. All rights reserved.</small>
+        <div class="footer-bottom-links">
+          <a href="#">Kebijakan Privasi</a>
+          <span class="footer-dot">·</span>
+          <a href="#">Syarat &amp; Ketentuan</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Login (unchanged) -->
+  <div id="loginModal" class="modal" style="display:none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Admin Login</h3>
+        <button class="modal-close" onclick="document.getElementById('loginModal').style.display='none'">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <label>Username <input id="username" type="text" /></label>
+      <label>Password <input id="password" type="password" /></label>
+      <div class="modal-actions">
+        <button id="doLogin" class="btn-primary"><span>Login</span></button>
+        <button id="closeModal" class="btn-outline">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ── Hamburger ── */
+    const header       = document.getElementById('siteHeader');
+    const hamburger    = document.getElementById('hamburger');
+    const mobileNav    = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileClose  = document.getElementById('mobileClose');
+
+    function openMobileNav()  { mobileNav.classList.add('open'); mobileOverlay.classList.add('open'); hamburger.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeMobileNav() { mobileNav.classList.remove('open'); mobileOverlay.classList.remove('open'); hamburger.classList.remove('active'); document.body.style.overflow = ''; }
+
+    hamburger.addEventListener('click', openMobileNav);
+    mobileClose.addEventListener('click', closeMobileNav);
+    mobileOverlay.addEventListener('click', closeMobileNav);
+
+    /* ── Navbar scroll ── */
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* ── Background Slideshow ── */
+    (function () {
+      const slides = document.querySelectorAll('.slide');
+      if (!slides.length) return;
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 6000);
+    })();
+
+    /* ── Scroll Reveal ── */
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('animated');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-animate]').forEach(el => obs.observe(el));
+    } else {
+      document.querySelectorAll('[data-animate]').forEach(el => el.classList.add('animated'));
+    }
+
+    /* ── About Content (unchanged logic) ── */
+    const CONTENT_KEY = 'dkv_about_content';
+    const GURU_KEY    = 'dkv_guru_data';
+
+    function loadAboutContent() {
+      const defaultContent = {
+        visiMisi: "Jurusan DKV berkomitmen untuk membentuk peserta didik yang tidak hanya terampil dalam mengolah elemen visual, tetapi juga mampu berpikir kritis, komunikatif, dan adaptif terhadap perkembangan zaman.\n\nJurusan ini menjadi program keahlian yang unggul, kreatif, dan inovatif dalam mencetak generasi muda yang mampu berkompetisi di dunia industri kreatif, serta berwawasan teknologi dan globalisasi.\n\nMelalui pembelajaran berbasis proyek, teknologi, dan seni, jurusan DKV bertujuan menghasilkan lulusan yang siap berkarya secara profesional di bidang desain grafis, ilustrasi, animasi, fotografi, maupun media digital lainnya.",
+        struktur: "Struktur organisasi Program Keahlian Desain Komunikasi Visual (DKV) terdiri dari beberapa unsur yang saling berperan dalam mendukung kegiatan belajar mengajar.\n\nTingkat tertinggi terdapat Kepala Sekolah yang memimpin seluruh kegiatan pendidikan di sekolah, dibantu oleh Wakil Kepala Sekolah bidang Kurikulum yang mengatur proses pembelajaran.\n\nDi bawahnya, terdapat Kepala Kompetensi Keahlian DKV yang bertanggung jawab terhadap pengelolaan jurusan, perencanaan kegiatan, serta pembinaan peserta didik di bidang desain komunikasi visual."
+      };
+      const data = localStorage.getItem(CONTENT_KEY);
+      if (data) { try { return JSON.parse(data); } catch(e) { return defaultContent; } }
+      return defaultContent;
+    }
+
+    function renderAboutContent() {
+      const content = loadAboutContent();
+      const visiDiv   = document.getElementById('visiMisiContent');
+      const strukturDiv = document.getElementById('strukturContent');
+      if (visiDiv)    visiDiv.innerHTML   = `<p>${content.visiMisi.replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')}</p>`;
+      if (strukturDiv) strukturDiv.innerHTML = `<p>${content.struktur.replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')}</p>`;
+    }
+
+    function getGuruFromStorage() {
+      const data = localStorage.getItem(GURU_KEY);
+      let guru = [];
+      if (data) { try { guru = JSON.parse(data); } catch(e) { guru = []; } }
+      // Jangan kembalikan data default jika kosong
+      return guru;
+    }
+
+    function renderTeachersFromStorage() {
+    const container = document.getElementById('teachersGrid');
+    if (!container) return;
+    const guru = getGuruFromStorage();
+    container.innerHTML = '';
+    
+    if (guru.length === 0) {
+        // Tampilkan pesan kosong jika tidak ada guru
+        container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
+                <div style="font-size: 3rem; margin-bottom: 16px; opacity: 0.5;">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: var(--text-secondary);">
+                    Belum Ada Data Guru
+                </h3>
+                <p style="font-size: 0.9rem; line-height: 1.5;">
+                    Data guru pengajar akan segera ditambahkan.
+                </p>
+            </div>
+        `;
+        return;
+    }
+    
+    guru.forEach(g => {
+        const card = document.createElement('div');
+        card.className = 'teacher-card';
+        
+        // Tentukan kelas status berdasarkan status guru
+        let statusClass = 'status-aktif'; // default hijau
+        if (g.status === 'Pensiun' || g.status === 'Tidak Aktif') {
+            statusClass = 'status-merah';
+        } else if (g.status === 'Cuti') {
+            statusClass = 'status-kuning';
+        }
+        
+        // HTML untuk foto atau placeholder
+        let photoHtml = '';
+        if (g.foto && g.foto !== '') {
+            // Jika ada foto, tampilkan gambar
+            photoHtml = `<img src="${g.foto}" alt="${g.nama}" style="width: 100%; height: 100%; object-fit: cover;">`;
+        } else {
+            // Jika tidak ada foto, tampilkan inisial
+            const initial = g.nama ? g.nama.charAt(0) : '?';
+            photoHtml = `<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 800; color: rgba(255,255,255,0.3);">${initial}</div>`;
+        }
+        
+        card.innerHTML = `
+            <div class="teacher-photo-placeholder" style="overflow: hidden;">
+                ${photoHtml}
+            </div>
+            <div class="teacher-info">
+                <div class="teacher-name">${escapeHtml(g.nama)}</div>
+                <div class="teacher-role">${escapeHtml(g.mapel)}</div>
+                <div class="teacher-meta ${statusClass}"><i class="fas fa-circle-check"></i> ${escapeHtml(g.status)}</div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Tambahkan fungsi escapeHtml jika belum ada
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+    function init() { renderAboutContent(); renderTeachersFromStorage(); updatePengajarStat(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+
+    function updatePengajarStat() {
+    const guru = getGuruFromStorage();
+    // Update di hero stats
+    const statCards = document.querySelectorAll('.about-stat-card');
+    statCards.forEach(card => {
+        const label = card.querySelector('.about-stat-label');
+        if (label && label.textContent.includes('Tenaga Pengajar')) {
+            const numEl = card.querySelector('.about-stat-num');
+            if (numEl) {
+                numEl.innerHTML = guru.length + '<span>+</span>';
+            }
+        }
+    });
+}
+
+    window.addEventListener('storage', (event) => {
+      if (event.key === CONTENT_KEY) renderAboutContent();
+    });
+  </script>
+</body>
+</html>

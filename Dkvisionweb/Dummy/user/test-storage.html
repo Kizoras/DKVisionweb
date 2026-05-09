@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test localStorage - DKV Guru</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #1a1a1a;
+      color: #0f0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      background: #222;
+      padding: 15px;
+      margin: 10px 0;
+      border-left: 3px solid #0f0;
+    }
+    button {
+      background: #0f0;
+      color: #000;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px 5px 5px 0;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #0a0;
+    }
+    pre {
+      background: #111;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+    .value {
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Test localStorage - DKV Guru Sync</h1>
+    
+    <div class="section">
+      <h3>Current localStorage Value:</h3>
+      <div id="currentValue" class="value">Loading...</div>
+    </div>
+
+    <div class="section">
+      <h3>Actions:</h3>
+      <button onclick="viewStorageKey()">View dkv_guru_data</button>
+      <button onclick="addTestGuru()">Add Test Guru (via JS)</button>
+      <button onclick="clearStorage()">Clear Storage</button>
+      <button onclick="resetDefaults()">Reset to Defaults</button>
+      <button onclick="startMonitoring()">Start Monitoring (5s)</button>
+    </div>
+
+    <div class="section">
+      <h3>Console Output:</h3>
+      <pre id="output"></pre>
+    </div>
+
+    <div class="section">
+      <h3>Instructions:</h3>
+      <ol>
+        <li>Open this page + about.html in 2 tabs</li>
+        <li>Click "View dkv_guru_data" to see current storage</li>
+        <li>Go to admin dashboard in another tab</li>
+        <li>Add a guru in dashboard</li>
+        <li>Come back to this page and click "View dkv_guru_data"</li>
+        <li>Storage value should change!</li>
+        <li>If it changes, about.html polling should detect it</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    const GURU_KEY = 'dkv_guru_data';
+    let monitorInterval = null;
+
+    function log(msg) {
+      const output = document.getElementById('output');
+      const timestamp = new Date().toLocaleTimeString();
+      output.textContent += `[${timestamp}] ${msg}\n`;
+      output.scrollTop = output.scrollHeight;
+      console.log(`[${timestamp}] ${msg}`);
+    }
+
+    function viewStorageKey() {
+      const value = localStorage.getItem(GURU_KEY);
+      const display = document.getElementById('currentValue');
+      
+      if (!value) {
+        display.innerHTML = 'KEY NOT FOUND in localStorage!';
+        log('KEY NOT FOUND: ' + GURU_KEY);
+        return;
+      }
+
+      try {
+        const data = JSON.parse(value);
+        display.innerHTML = `
+          <strong>Found! (${value.length} characters)</strong><br>
+          <strong>Count: ${data.length} guru</strong><br>
+          <pre>${JSON.stringify(data, null, 2)}</pre>
+        `;
+        log(`Storage contains ${data.length} guru - ${value.length} chars`);
+      } catch (e) {
+        display.innerHTML = `JSON Parse Error: ${e.message}`;
+        log('Parse Error: ' + e.message);
+      }
+    }
+
+    function addTestGuru() {
+      try {
+        const value = localStorage.getItem(GURU_KEY);
+        let data = value ? JSON.parse(value) : [];
+        
+        const newGuru = {
+          id: data.length > 0 ? Math.max(...data.map(g => g.id)) + 1 : 1,
+          nama: 'Test Guru ' + new Date().getTime(),
+          foto: '',
+          mapel: 'Test Mapel',
+          status: 'Aktif'
+        };
+        
+        data.unshift(newGuru);
+        const jsonString = JSON.stringify(data);
+        localStorage.setItem(GURU_KEY, jsonString);
+        
+        log(`Added test guru: "${newGuru.nama}" - Storage now: ${data.length} guru`);
+        viewStorageKey();
+      } catch (e) {
+        log(`Error adding guru: ${e.message}`);
+      }
+    }
+
+    function clearStorage() {
+      localStorage.removeItem(GURU_KEY);
+      log('Cleared dkv_guru_data from localStorage');
+      viewStorageKey();
+    }
+
+    function resetDefaults() {
+      const defaults = [
+        { id: 1, nama: 'Drs. Ahmad Wijaya', foto: '', mapel: 'Desain Grafis, Branding', status: 'Aktif' },
+        { id: 2, nama: 'Budi Santoso, S.Pd', foto: '', mapel: 'Adobe Suite, Typography', status: 'Aktif' },
+        { id: 3, nama: 'Siti Nurhaliza, S.Pd', foto: '', mapel: 'Photography, Photo Editing', status: 'Aktif' },
+        { id: 4, nama: 'Reza Pratama, S.Pd', foto: '', mapel: 'Animation, Video Editing', status: 'Aktif' },
+        { id: 5, nama: 'Eka Susanti, S.Pd', foto: '', mapel: 'Illustration, Concept Design', status: 'Aktif' },
+        { id: 6, nama: 'Hendra Kusuma, S.Pd', foto: '', mapel: 'Web Design, UI/UX, Figma', status: 'Aktif' }
+      ];
+      localStorage.setItem(GURU_KEY, JSON.stringify(defaults));
+      log('Reset to defaults - 6 guru');
+      viewStorageKey();
+    }
+
+    function startMonitoring() {
+      if (monitorInterval) {
+        clearInterval(monitorInterval);
+        log('Monitoring stopped');
+        return;
+      }
+
+      let lastValue = localStorage.getItem(GURU_KEY);
+      let checkCount = 0;
+
+      log('Starting monitoring for 30 seconds...');
+      monitorInterval = setInterval(() => {
+        checkCount++;
+        const currentValue = localStorage.getItem(GURU_KEY);
+        
+        if (currentValue !== lastValue) {
+          const lastData = lastValue ? JSON.parse(lastValue) : [];
+          const currentData = currentValue ? JSON.parse(currentValue) : [];
+          log(`CHANGE DETECTED! Check #${checkCount}: ${lastData.length} → ${currentData.length} guru`);
+          lastValue = currentValue;
+        }
+      }, 500);
+
+      setTimeout(() => {
+        clearInterval(monitorInterval);
+        monitorInterval = null;
+        log('Monitoring stopped after 30 seconds');
+      }, 30000);
+    }
+    
+    window.addEventListener('load', () => {
+      log('Test page loaded');
+      log(`Key to monitor: ${GURU_KEY}`);
+      viewStorageKey();
+    });
+  </script>
+</body>
+</html>

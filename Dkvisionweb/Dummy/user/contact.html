@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="id">
+<head><script src="dkv_site.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="../gambar/dkvisionlogo.jpeg" />
+  <title>Hubungi Kami — DKV SMKN 1 Cibinong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --navy: #0A1628;
+      --navy-mid: #142040;
+      --navy-light: #1A2F5E;
+      --gold: #6B0F1A;
+      --gold-bright: #9A1A2A;
+      --gold-pale: rgba(107, 15, 26, 0.08);
+      --white: #FFFFFF;
+      --surface: #F4F6FA;
+      --surface-2: #EEF1F7;
+      --border: #DDE2EE;
+      --text: #1A2340;
+      --text-muted: #6B7897;
+      --header-h: 72px;
+      --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 22px; --r-full: 9999px;
+      --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px; --sp-6: 24px;
+      --sp-7: 28px; --sp-8: 32px; --sp-9: 40px; --sp-10: 56px; --sp-11: 72px;
+      --sh-sm: 0 2px 12px rgba(10,22,40,0.08);
+      --sh-lg: 0 8px 32px rgba(10,22,40,0.13);
+      --sh-xl: 0 16px 56px rgba(10,22,40,0.18);
+      --t-fast: 180ms; --t-mid: 280ms; --t-slow: 420ms;
+      --ease: cubic-bezier(0.4,0,0.2,1);
+      --font-display: 'Plus Jakarta Sans', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    body { font-family: var(--font-body); color: var(--text); }
+
+    /* ===== REUSABLE ===== */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      background: rgba(107, 15, 26, 0.08);
+      border: 1px solid rgba(107, 15, 26, 0.2);
+      border-radius: var(--r-full);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: var(--sp-4);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; color: var(--navy);
+      line-height: 1.15; margin-bottom: var(--sp-4);
+      letter-spacing: -0.02em;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-desc { font-size: 1rem; color: var(--text-muted); max-width: 520px; margin-inline: auto; line-height: 1.75; }
+    .section-header { text-align: center; margin-bottom: var(--sp-9); }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+      color: var(--navy); font-family: var(--font-body);
+      font-size: 0.875rem; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; border: none; border-radius: var(--r-full);
+      cursor: pointer; transition: all var(--t-fast) var(--ease);
+      box-shadow: 0 4px 16px rgba(200, 42, 42, 0.35);
+      text-decoration: none;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200, 42, 42, 0.45); }
+
+    [data-animate] { opacity: 0; transform: translateY(24px); transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease); }
+    [data-animate="fadeIn"] { transform: none; }
+    [data-animate].animated { opacity: 1; transform: none; }
+
+    /* ===== HERO ===== */
+    .contact-hero {
+      padding-top: var(--sp-10);
+      padding-bottom: var(--sp-10);
+      background: linear-gradient(145deg, #0A1628 0%, #142040 45%, #1A2F5E 80%, #0A1628 100%);
+      position: relative; overflow: hidden; z-index: 2; text-align: center;
+    }
+    .contact-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
+    }
+    .contact-hero::before {
+      content: ''; position: absolute; top: -100px; right: -80px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(200, 42, 42, 0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-hero::after {
+      content: ''; position: absolute; bottom: -80px; left: -60px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(30,48,96,0.55) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-hero-inner {
+      position: relative; z-index: 2;
+      max-width: 640px; margin-inline: auto;
+    }
+    .contact-hero-inner .section-label {
+      background: rgba(107, 15, 26, 0.15);
+      border-color: rgba(107, 15, 26, 0.3);
+      color: var(--gold-bright);
+    }
+    .contact-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.1; margin-bottom: var(--sp-5);
+      letter-spacing: -0.02em;
+    }
+    .contact-hero-title em { font-style: italic; color: var(--gold-bright); }
+    .contact-hero-desc {
+      font-size: 1.05rem; color: rgba(255,255,255,0.62);
+      line-height: 1.8; margin-bottom: var(--sp-8);
+      max-width: 500px; margin-inline: auto;
+    }
+
+    /* Hero Stats */
+    .contact-hero-stats {
+      display: flex; align-items: center; justify-content: center;
+      gap: var(--sp-7); padding-top: var(--sp-7);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .contact-hero-stat .stat-num {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 800;
+      color: var(--white); line-height: 1; margin-bottom: 4px;
+    }
+    .contact-hero-stat .stat-num span { color: var(--gold-bright); font-size: 1.3rem; }
+    .contact-hero-stat .stat-label {
+      font-size: 0.72rem; color: rgba(255,255,255,0.42);
+      text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;
+    }
+    .stat-divider {
+      width: 1px; height: 40px;
+      background: rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
+
+    /* ===== MAIN SECTION ===== */
+    .section-contact { background: var(--surface); padding-block: var(--sp-11); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: var(--sp-8);
+      align-items: start;
+    }
+
+    /* ===== INFO PANELS ===== */
+    .contact-info-stack { display: flex; flex-direction: column; gap: var(--sp-5); }
+
+    .section-panel {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-6);
+      transition: all var(--t-mid) var(--ease);
+      position: relative; overflow: hidden;
+    }
+    .section-panel::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--t-mid);
+    }
+    .section-panel:hover { box-shadow: var(--sh-lg); border-color: rgba(200, 42, 42, 0.2); }
+    .section-panel:hover::after { transform: scaleX(1); }
+
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--navy); margin-bottom: var(--sp-5);
+      padding-bottom: var(--sp-4);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: var(--sp-3);
+    }
+    .panel-title i { color: var(--gold); font-size: 0.95rem; }
+
+    /* Info items */
+    .info-grid { display: flex; flex-direction: column; gap: var(--sp-4); }
+    .info-item {
+      display: flex; gap: var(--sp-4); align-items: flex-start;
+      padding: var(--sp-4); border-radius: var(--r-md);
+      background: var(--surface); border: 1px solid var(--border);
+      transition: all var(--t-fast) var(--ease);
+    }
+    .info-item:hover { border-color: rgba(177, 19, 19, 0.28); background: var(--gold-pale); }
+    .info-item-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; color: var(--gold-bright);
+      box-shadow: 0 4px 12px rgba(10,22,40,0.18);
+    }
+    .info-item-content {}
+    .info-item-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 3px;
+    }
+    .info-item-value {
+      font-size: 0.9rem; color: var(--text); line-height: 1.55; font-weight: 500;
+    }
+    .info-item-value a { color: var(--text); text-decoration: none; transition: color var(--t-fast); }
+    .info-item-value a:hover { color: var(--gold); }
+
+    /* Social links */
+    .social-links { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: var(--r-full);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+      text-decoration: none; transition: all var(--t-fast) var(--ease);
+      border: 1.5px solid var(--border); color: var(--text-muted);
+      background: var(--surface);
+    }
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+      color: var(--navy); border-color: transparent;
+      box-shadow: 0 4px 16px rgba(177, 19, 19, 0.28);
+      transform: translateY(-2px);
+    }
+    .social-link i { font-size: 0.85rem; }
+
+    /* Map */
+    .map-wrapper {
+      border-radius: var(--r-lg); overflow: hidden;
+      border: 1.5px solid var(--border);
+      box-shadow: var(--sh-sm);
+    }
+    .map-wrapper iframe { display: block; }
+
+    /* ===== FORM PANEL ===== */
+    .form-panel {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: var(--r-xl); padding: var(--sp-8);
+      position: relative; overflow: hidden;
+      box-shadow: var(--sh-xl);
+    }
+    .form-panel::before {
+      content: ''; position: absolute;
+      top: -80px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(177, 19, 19, 0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .form-panel::after {
+      content: ''; position: absolute;
+      bottom: -60px; left: -40px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(26,47,94,0.7) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .form-panel-inner { position: relative; z-index: 2; }
+
+    .form-panel-label {
+      font-family: var(--font-display);
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-bright); margin-bottom: var(--sp-4);
+      display: flex; align-items: center; gap: var(--sp-2);
+    }
+    .form-panel-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(177, 19, 19, 0.4), transparent);
+    }
+
+    .form-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem; font-weight: 800;
+      color: var(--white); margin-bottom: var(--sp-2); line-height: 1.2;
+    }
+    .form-panel-desc {
+      font-size: 0.9rem; color: rgba(255,255,255,0.52);
+      line-height: 1.7; margin-bottom: var(--sp-7);
+    }
+
+    .form-fields { display: flex; flex-direction: column; gap: var(--sp-4); }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+
+    .field-group { display: flex; flex-direction: column; gap: 7px; }
+
+    .field-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .field-wrap { position: relative; }
+    .field-wrap i {
+      position: absolute; left: 14px; top: 50%;
+      transform: translateY(-50%);
+      color: rgba(177, 19, 19, 0.55); font-size: 0.85rem;
+      pointer-events: none; transition: color var(--t-fast);
+    }
+    .field-wrap.textarea-wrap i { top: 16px; transform: none; }
+
+    .field-input {
+      width: 100%; padding: 12px 14px 12px 40px;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-md);
+      font-family: var(--font-body); font-size: 0.9rem;
+      color: var(--white); outline: none;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .field-input::placeholder { color: rgba(255,255,255,0.28); }
+    .field-input:focus {
+      border-color: rgba(177, 19, 19, 0.28);
+      background: rgba(186, 16, 16, 0.14);
+      box-shadow: 0 0 0 3px rgba(177, 19, 19, 0.12);
+    }
+    .field-input:focus + i,
+    .field-wrap:focus-within i { color: var(--gold-bright); }
+
+    textarea.field-input {
+      resize: vertical; min-height: 130px;
+      padding-top: 14px; line-height: 1.6;
+    }
+
+    .form-submit-row { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); flex-wrap: wrap; margin-top: var(--sp-3); }
+
+    .form-note { font-size: 0.78rem; color: rgba(255,255,255,0.35); line-height: 1.5; max-width: 200px; }
+    .form-note i { color: var(--gold); margin-right: 4px; }
+
+    .btn-form-submit {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 30px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+      color: var(--navy); font-family: var(--font-body);
+      font-size: 0.875rem; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; border: none; border-radius: var(--r-full);
+      cursor: pointer; transition: all var(--t-fast) var(--ease);
+      box-shadow: 0 4px 20px rgba(240, 25, 25, 0.4);
+    }
+    .btn-form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(177, 19, 19, 0.5); }
+    .btn-form-submit:active { transform: translateY(0); }
+
+    /* ===== CTA STRIP ===== */
+    .section-cta {
+      background: var(--navy);
+      padding-block: var(--sp-10);
+      text-align: center;
+      position: relative; z-index: 2; overflow: hidden;
+    }
+    .section-cta::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200, 42, 42, 0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .section-cta-inner { position: relative; z-index: 2; max-width: 580px; margin-inline: auto; }
+    .section-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; color: var(--white);
+      margin-bottom: var(--sp-4); line-height: 1.2;
+    }
+    .section-cta h2 em { font-style: italic; color: var(--gold-bright); }
+    .section-cta p { font-size: 0.975rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: var(--sp-7); }
+    .section-cta-actions { display: flex; justify-content: center; gap: var(--sp-4); flex-wrap: wrap; }
+    .btn-outline-light {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: var(--r-full);
+      font-size: 0.875rem; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.75);
+      background: transparent; transition: all var(--t-fast) var(--ease);
+    }
+    .btn-outline-light:hover { border-color: var(--gold-bright); color: var(--gold-bright); background: rgba(200,146,42,0.08); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1000px) {
+      .contact-grid { grid-template-columns: 1fr; gap: var(--sp-7); }
+      .form-panel { order: -1; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-hero-stats { gap: var(--sp-5); flex-wrap: wrap; }
+      .form-submit-row { flex-direction: column; align-items: stretch; }
+      .form-note { max-width: 100%; }
+      .btn-form-submit { justify-content: center; }
+    }
+    @media (max-width: 420px) {
+      .contact-hero-stats { flex-direction: column; gap: var(--sp-4); }
+      .stat-divider { width: 40px; height: 1px; }
+    }
+  </style>
+</head>
+<body id="contact-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+        <div class="logo-text">
+          <span class="logo-name" id="site-logo-name">Jurusan DKV</span>
+          <span class="logo-tagline" id="site-logo-tagline">SMKN 1 Cibinong</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="news.html" class="nav-link">News</a>
+        <a href="curriculum.html" class="nav-link">Kurikulum</a>
+        <a href="portfolio.html" class="nav-link">Portofolio</a>
+        
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="https://smkn1cibinong.sch.id" target="_blank" rel="noopener" class="nav-link nav-external">
+          SMKN 1 Cibinong <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
+        </a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+  <nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+        <div class="logo-text">
+          <span class="logo-name" id="mobile-logo-name">Jurusan DKV</span>
+          <span class="logo-tagline" id="mobile-logo-tagline">SMKN 1 Cibinong</span>
+        </div>
+      </div>
+      <button class="mobile-nav-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="about.html" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About</a>
+      <a href="news.html" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> News</a>
+      <a href="curriculum.html" class="mobile-nav-link"><i class="fa-solid fa-book-open"></i> Kurikulum</a>
+      <a href="portfolio.html" class="mobile-nav-link"><i class="fa-solid fa-images"></i> Portofolio</a>
+      
+      <a href="contact.html" class="mobile-nav-link active"><i class="fa-solid fa-envelope"></i> Contact</a>
+      <a href="https://smkn1cibinong.sch.id" target="_blank" class="mobile-nav-link"><i class="fa-solid fa-school"></i> SMKN 1 Cibinong</a>
+    </div>
+    <div class="mobile-nav-social">
+      <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://facebook.com/smkn1cibinong" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@smkn1_cibinong" target="_blank" class="mobile-social-btn"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </nav>
+
+ <!-- Background Slideshow -->
+  <div class="background-slideshow">
+    <div class="slide active" style="background-image: url('gambar/webpage.jpg');"></div>
+    <div class="slide" style="background-image: url('gambar/dkvlab.jpg');"></div>
+  </div>
+  <div class="background-overlay"></div>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="contact-hero">
+      <div class="contact-hero-grid"></div>
+      <div class="container">
+        <div class="contact-hero-inner" data-animate="fadeUp">
+          <div class="section-label">Hubungi Kami</div>
+          <h1 class="contact-hero-title">Get In <em>Touch</em></h1>
+          <p class="contact-hero-desc">
+            Sampaikan pertanyaan, saran, atau informasi lebih lanjut tentang jurusan DKV SMKN 1 Cibinong. Kami siap membantu kamu.
+          </p>
+          <div class="contact-hero-stats">
+            <div class="contact-hero-stat">
+              <div class="stat-num">24<span>h</span></div>
+              <div class="stat-label">Respon Cepat</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="contact-hero-stat">
+              <div class="stat-num">2<span>+</span></div>
+              <div class="stat-label">Saluran Kontak</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="contact-hero-stat">
+              <div class="stat-num">5<span>+</span></div>
+              <div class="stat-label">Media Sosial</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MAIN CONTACT SECTION ===== -->
+    <section class="section-contact">
+      <div class="container">
+        <div class="section-header" data-animate="fadeUp">
+          <div class="section-label">Informasi Kontak</div>
+          <h2 class="section-title">Kami Ada untuk <em>Kamu</em></h2>
+          <p class="section-desc">Gunakan salah satu saluran berikut atau kirim pesan langsung melalui formulir di samping.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- LEFT: Info -->
+          <div class="contact-info-stack" data-animate="fadeUp">
+
+            <!-- Info Sekolah -->
+            <div class="section-panel">
+              <h3 class="panel-title"><i class="fa-solid fa-building-columns"></i> Informasi Sekolah</h3>
+              <div class="info-grid">
+
+                <div class="info-item">
+                  <div class="info-item-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                  <div class="info-item-content">
+                    <div class="info-item-label">Alamat</div>
+                    <div class="info-item-value">Jalan 7 Karadenan, Cibinong, Kabupaten Bogor, Jawa Barat, Indonesia</div>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <div class="info-item-icon"><i class="fa-solid fa-phone"></i></div>
+                  <div class="info-item-content">
+                    <div class="info-item-label">Telepon</div>
+                    <div class="info-item-value">
+                      <a href="tel:+622518663846">(0251) 8663846</a><br>
+                      <a href="tel:+622518665558">(0251) 8665558</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <div class="info-item-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                  <div class="info-item-content">
+                    <div class="info-item-label">WhatsApp</div>
+                    <div class="info-item-value"><a href="https://wa.me/+6281310748771" target="_blank">+62 813-1074-8771</a></div>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <div class="info-item-icon"><i class="fa-solid fa-envelope"></i></div>
+                  <div class="info-item-content">
+                    <div class="info-item-label">Email</div>
+                    <div class="info-item-value"><a id="contact-email-link" href="mailto:cibionebogor@yahoo.com">cibionebogor@yahoo.com</a></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Media Sosial -->
+            <div class="section-panel">
+              <h3 class="panel-title"><i class="fa-solid fa-share-nodes"></i> Media Sosial</h3>
+              <div class="social-links">
+                <a href="https://youtu.be/l-DefCkFt_Y" target="_blank" class="social-link">
+                  <i class="fa-brands fa-youtube"></i> YouTube
+                </a>
+                <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-link">
+                  <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://facebook.com/smkn1cibinong" target="_blank" class="social-link">
+                  <i class="fa-brands fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.tiktok.com/@smkn1_cibinong" target="_blank" class="social-link">
+                  <i class="fa-brands fa-tiktok"></i> TikTok
+                </a>
+              </div>
+            </div>
+
+            <!-- Lokasi / Map -->
+            <div class="section-panel">
+              <h3 class="panel-title"><i class="fa-solid fa-location-dot"></i> Lokasi Kami</h3>
+              <div class="map-wrapper">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5!2d106.8054721!3d-6.5219587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c3db9bbedcc3:0x1f5280e86053b1e9!2sSMK+NEGERI+1+Cibinong!5e0!3m2!1sen!2sid!4v1234567890!5m2!1sen!2sid"
+                  width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT: Form -->
+          <div class="form-panel" data-animate="fadeIn">
+            <div class="form-panel-inner">
+              <div class="form-panel-label">
+                <i class="fa-solid fa-paper-plane fa-sm"></i>
+                Formulir Pesan
+              </div>
+              <h3>Kirim Pesan<br>Kepada Kami</h3>
+              <p class="form-panel-desc">
+                Isi formulir di bawah dan tim kami akan merespons dalam 1×24 jam kerja.
+              </p>
+
+              <form action="../admin/kontak_pesan.php" method="post">
+                <div class="form-fields">
+
+                  <div class="form-row">
+                    <div class="field-group">
+                      <label class="field-label">Nama Lengkap</label>
+                      <div class="field-wrap">
+                        <input class="field-input" type="text" name="nama" placeholder="Nama kamu..." required>
+                        <i class="fa-solid fa-user"></i>
+                      </div>
+                    </div>
+                    <div class="field-group">
+                      <label class="field-label">Email</label>
+                      <div class="field-wrap">
+                        <input class="field-input" type="email" name="email" placeholder="email@domain.com" required>
+                        <i class="fa-solid fa-envelope"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field-group">
+                    <label class="field-label">No. Telepon <span style="color:rgba(255,255,255,0.3);font-size:0.7rem;font-weight:400;">(opsional)</span></label>
+                    <div class="field-wrap">
+                      <input class="field-input" type="tel" name="telepon" placeholder="+62 xxx-xxxx-xxxx">
+                      <i class="fa-solid fa-phone"></i>
+                    </div>
+                  </div>
+
+                  <div class="field-group">
+                    <label class="field-label">Topik</label>
+                    <div class="field-wrap">
+                      <select class="field-input" name="topik" style="cursor:pointer; appearance:none;">
+                        <option value="" disabled selected style="background:#142040;">Pilih topik pesan...</option>
+                        <option value="pendaftaran" style="background:#142040;">Informasi Pendaftaran</option>
+                        <option value="kurikulum" style="background:#142040;">Kurikulum & Program</option>
+                        <option value="portofolio" style="background:#142040;">Portofolio</option>
+                        <option value="kerjasama" style="background:#142040;">Kerjasama & MOU</option>
+                        <option value="lainnya" style="background:#142040;">Lainnya</option>
+                      </select>
+                      <i class="fa-solid fa-tag"></i>
+                    </div>
+                  </div>
+
+                  <div class="field-group">
+                    <label class="field-label">Pesan</label>
+                    <div class="field-wrap textarea-wrap">
+                      <textarea class="field-input" name="pesan" rows="5" placeholder="Tulis pesanmu di sini..." required></textarea>
+                      <i class="fa-solid fa-message"></i>
+                    </div>
+                  </div>
+
+                  <div class="form-submit-row">
+                    <p class="form-note">
+                      <i class="fa-solid fa-shield-halved"></i>
+                      Data kamu aman dan tidak akan dibagikan kepada pihak ketiga.
+                    </p>
+                    <button type="submit" class="btn-form-submit">
+                      Kirim Pesan <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA STRIP ===== -->
+    <section class="section-cta">
+      <div class="container">
+        <div class="section-cta-inner" data-animate="fadeUp">
+          <h2>Tertarik Bergabung di <em>Jurusan DKV?</em></h2>
+          <p>
+            Temukan informasi lengkap tentang kurikulum, fasilitas, dan keunggulan jurusan DKV SMKN 1 Cibinong.
+            Kami siap membantu kamu meraih karier impian di industri kreatif.
+          </p>
+          <div class="section-cta-actions">
+            <a href="curriculum.html" class="btn-primary">
+              <span>Lihat Kurikulum</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="portfolio.html" class="btn-outline-light">
+              <i class="fa-solid fa-images"></i>
+              <span>Lihat Portofolio</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-mark"><span><img src="../gambar/dkvisionlogo.jpeg" alt=""></span></div>
+              <div class="logo-text">
+                <span class="logo-name" id="footer-logo-name">Jurusan DKV</span>
+                <span class="logo-tagline" id="footer-logo-tagline">SMKN 1 Cibinong</span>
+              </div>
+            </div>
+            <p class="footer-brand-desc">Mencetak generasi kreatif dan profesional di bidang Desain Komunikasi Visual sejak 2022.</p>
+            <div class="footer-socials">
+              <a href="https://www.instagram.com/smkn1cbn_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="footer-social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://facebook.com/smkn1cibinong" target="_blank" class="footer-social" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://youtube.com/@SMKN1Cibinong_Official" target="_blank" class="footer-social" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+              <a href="https://www.tiktok.com/@smkn1_cibinong?_r=1&_t=ZS-95xbpDz747N" target="_blank" class="footer-social" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Navigasi</h4>
+            <div class="footer-links">
+              <a href="index.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Beranda</a>
+              <a href="about.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Tentang</a>
+              <a href="curriculum.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Kurikulum</a>
+              <a href="contact.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Kontak</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Konten</h4>
+            <div class="footer-links">
+              <a href="portfolio.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Portofolio</a>
+              
+              <a href="news.html"><i class="fa-solid fa-chevron-right fa-xs"></i> Berita</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Kontak</h4>
+            <div class="footer-contact-items">
+              <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a id="footer-email-link" href="mailto:cibionebogor@yahoo.com">cibionebogor@yahoo.com</a></div>
+              <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+622518663846">(0251) 8663846</a></div>
+              <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span>Cibinong, Bogor, Jawa Barat</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <small>&copy; 2026 Jurusan DKV — SMKN 1 Cibinong. All rights reserved.</small>
+        <div class="footer-bottom-links">
+          <a href="#">Kebijakan Privasi</a>
+          <span class="footer-dot">·</span>
+          <a href="#">Syarat &amp; Ketentuan</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Login -->
+  <div id="loginModal" class="modal" style="display:none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Admin Login</h3>
+        <button class="modal-close" onclick="document.getElementById('loginModal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <label>Username <input id="username" type="text" /></label>
+      <label>Password <input id="password" type="password" /></label>
+      <div class="modal-actions">
+        <button id="doLogin" class="btn-primary"><span>Login</span></button>
+        <button id="closeModal" class="btn-outline">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../app.js"></script>
+  <script>
+  // ================================================================
+  // LOAD SETTINGS DARI SERVER (api_data.php)
+  // Membaca nama website & email admin yang disimpan dari dashboard
+  // ================================================================
+  (function () {
+    var API = '../api_data.php';
+
+    // Default values (fallback jika server belum punya data)
+    var defaults = {
+      branding: { nama: 'Jurusan DKV', tagline: 'SMKN 1 Cibinong' },
+      email:    'cibionebogor@yahoo.com'
+    };
+
+    function applySettings(branding, email) {
+      // -- Header logo
+      var el;
+      el = document.getElementById('site-logo-name');
+      if (el) el.textContent = branding.nama;
+
+      el = document.getElementById('site-logo-tagline');
+      if (el) el.textContent = branding.tagline;
+
+      // -- Mobile nav logo
+      el = document.getElementById('mobile-logo-name');
+      if (el) el.textContent = branding.nama;
+
+      el = document.getElementById('mobile-logo-tagline');
+      if (el) el.textContent = branding.tagline;
+
+      // -- Email di info kontak
+      el = document.getElementById('contact-email-link');
+      if (el) { el.textContent = email; el.href = 'mailto:' + email; }
+
+      // -- Footer logo
+      el = document.getElementById('footer-logo-name');
+      if (el) el.textContent = branding.nama;
+
+      el = document.getElementById('footer-logo-tagline');
+      if (el) el.textContent = branding.tagline;
+
+      // -- Email di footer
+      el = document.getElementById('footer-email-link');
+      if (el) { el.textContent = email; el.href = 'mailto:' + email; }
+    }
+
+    // Ambil dua key sekaligus dari api_data.php
+    // Note: dashboard pakai key 'dkv_site_branding', tapi SYNC_KEYS punya 'dkv_branding'
+    // Kita fetch keduanya dan pakai yang ada nilainya
+    Promise.all([
+      fetch(API + '?key=dkv_site_branding').then(function(r){ return r.json(); }).catch(function(){ return null; }),
+      fetch(API + '?key=dkv_branding').then(function(r){ return r.json(); }).catch(function(){ return null; }),
+      fetch(API + '?key=dkv_email_admin').then(function(r){ return r.json(); }).catch(function(){ return null; })
+    ]).then(function (results) {
+      var branding = Object.assign({}, defaults.branding);
+      var email    = defaults.email;
+
+      // Parse branding — pakai dkv_site_branding dulu, fallback ke dkv_branding
+      var brandingRaw = (results[0] && results[0].value) ? results[0].value
+                      : (results[1] && results[1].value) ? results[1].value
+                      : null;
+      if (brandingRaw) {
+        try { Object.assign(branding, JSON.parse(brandingRaw)); } catch (e) {}
+      }
+
+      // Parse email
+      if (results[2] && results[2].value) {
+        var raw = results[2].value;
+        email = raw.replace(/^"|"$/g, '').trim();
+        if (!email) email = defaults.email;
+      }
+
+      applySettings(branding, email);
+    }).catch(function () {
+      applySettings(defaults.branding, defaults.email);
+    });
+  })();
+  </script>
+  <script>
+    // Navbar scroll
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+
+    // Slideshow
+    (function () {
+      const slides = document.querySelectorAll('.slide');
+      if (!slides.length) return;
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 6000);
+    })();
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileClose = document.getElementById('mobileClose');
+    function openMobileNav() { mobileNav.classList.add('open'); mobileOverlay.classList.add('open'); hamburger.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeMobileNav() { mobileNav.classList.remove('open'); mobileOverlay.classList.remove('open'); hamburger.classList.remove('active'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', openMobileNav);
+    mobileClose.addEventListener('click', closeMobileNav);
+    mobileOverlay.addEventListener('click', closeMobileNav);
+
+    // Scroll reveal
+    const animEls = document.querySelectorAll('[data-animate]');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const delay = el.dataset.delay || 0;
+            setTimeout(() => el.classList.add('animated'), parseInt(delay));
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.1 });
+      animEls.forEach(el => observer.observe(el));
+    } else {
+      animEls.forEach(el => el.classList.add('animated'));
+    }
+  </script>
+</body>
+</html>
